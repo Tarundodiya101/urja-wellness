@@ -1,0 +1,24 @@
+# URJA Wellness Club — Build Tasks
+
+- [/] Project scaffold (Vite + React)
+- [ ] Install dependencies (Tailwind, Recharts, React Router, React Icons)
+- [ ] Configure Tailwind CSS
+- [ ] Create mock data (mockData.js)
+- [ ] Create AppContext (global state)
+- [ ] Create shared components (StatCard, Badge, Modal, Table)
+- [ ] Create Layout (Sidebar, Header)
+- [ ] LoginPage
+- [ ] Dashboard
+- [ ] Members (Registration & Profile)
+- [ ] Attendance
+- [ ] Billing
+- [ ] Payments
+- [ ] MemberLedger
+- [ ] Inventory/Stock
+- [ ] RefillReminder
+- [ ] DailyClosing
+- [ ] FollowUpCRM
+- [ ] WhatsApp Automation
+- [ ] Reports & Analytics
+- [ ] Wire up Router in App.jsx
+- [ ] Final verification (npm run dev)

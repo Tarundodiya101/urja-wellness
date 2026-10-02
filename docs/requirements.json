@@ -1,0 +1,151 @@
+{
+  "title": "URJA Wellness Club",
+  "documentTitle": "Client Requirements & Demo Scope",
+  "subtitle": "Nutrition Center Management Software",
+  "version": "1.0",
+  "date": "03 October 2026",
+  "overview": "This document describes the intended workflows, user-facing requirements, and current boundaries of the URJA Wellness Club management panel. It is intended for client review of the interactive demonstration and as a baseline for production planning.",
+  "sections": [
+    {
+      "title": "1. Product Goal and Center Setup",
+      "points": [
+        "Provide one management workspace for daily nutrition-center operations: member relationships, visits, sales, collections, stock, expenses, and reporting.",
+        "Present the URJA Wellness Club identity with a consistent wellness-oriented green theme, clear status colors, readable tables, and responsive layouts.",
+        "Support center identity, branch context, staff names, coaches, packages, program types, batch times, and configurable business values.",
+        "Provide a dashboard as the default signed-in landing page, with operational summaries and shortcuts to common tasks."
+      ]
+    },
+    {
+      "title": "2. Users, Roles, and Access",
+      "points": [
+        "Provide a sign-in screen and a sign-out action. Demo credentials and role behavior must be clearly identified as demonstration behavior.",
+        "Represent center roles such as administrator, manager, coach, and front-desk operator, with access appropriate to each role in a production deployment.",
+        "Allow authorized administrators to create and maintain user profiles and role assignments.",
+        "Record important user and operational actions in an activity log so changes can be reviewed."
+      ]
+    },
+    {
+      "title": "3. Member Registration and Profile",
+      "points": [
+        "Create, view, edit, search, filter, and remove member records using name, mobile number, member identifier, coach, status, and other available fields.",
+        "Capture contact information, date of birth, gender, address or area, referral source, program, coach, batch, joining date, package, start date, and expiry date.",
+        "Track package fee, payments received, and outstanding balance. Recalculate the balance when member payment details change.",
+        "Assign a stable member identifier and maintain profile details such as attendance, progress notes, visits, package history, and ledger activity.",
+        "Support member status values such as active, expired, trial, and hold, and highlight upcoming expiries and birthdays."
+      ]
+    },
+    {
+      "title": "4. Leads and Follow-up CRM",
+      "points": [
+        "Capture prospective member name, mobile, source, assigned coach, stage, last-contact date, notes, and planned next follow-up.",
+        "Search and filter prospects by status and follow-up stage, including new, interested, visit planned, visited, joined, and no response.",
+        "Allow staff to update lead details and convert a prospect into a member without losing useful relationship context.",
+        "Show follow-ups due today and overdue follow-ups in operational views."
+      ]
+    },
+    {
+      "title": "5. Attendance and Center Consumption",
+      "points": [
+        "Record member visits by date and time, with a search or barcode-ready check-in workflow.",
+        "Support marking members present or absent, editing attendance where permitted, and reviewing daily attendance history.",
+        "Update visit counts when attendance is recorded and prevent duplicate attendance entries for the same member and date where configured.",
+        "Record center product or shake consumption against a visit and reflect consumed quantities in stock totals.",
+        "Provide attendance summaries by day, member, batch, and coach for operational review."
+      ]
+    },
+    {
+      "title": "6. Packages, Billing, and Receipts",
+      "points": [
+        "Maintain package duration and price, and calculate the expected membership end date from the selected start date and package duration.",
+        "Create itemized bills for packages and products, calculate totals, discounts, amounts paid, and balances due, and assign a unique receipt or bill reference.",
+        "Support payment methods such as cash, UPI, bank transfer, and cheque where configured by the center.",
+        "Provide a printable invoice view and keep bill and payment history linked to the member account."
+      ]
+    },
+    {
+      "title": "7. Payments, Dues, and Member Ledger",
+      "points": [
+        "Record payment date, amount, mode, member, receipt number, payment purpose, and remaining balance.",
+        "Update member paid and pending totals when a payment is recorded, without allowing the outstanding amount to fall below zero.",
+        "Maintain a chronological member ledger of charges and credits with a running balance and printable statement.",
+        "Provide collection and outstanding-due summaries for daily center follow-up."
+      ]
+    },
+    {
+      "title": "8. Products, Purchasing, and Inventory",
+      "points": [
+        "Maintain product name, category, unit, barcode or product code, purchase and selling prices, current quantity, minimum quantity, batch, and expiry date.",
+        "Record supplier purchase invoices and line items, quantities, purchase rates, expiry details, and paid or due amounts.",
+        "Increase inventory on purchase and reduce it on a recorded sale, consumption, or stock adjustment.",
+        "Show low-stock, out-of-stock, and expiring-product alerts; support stock corrections with a reason and audit entry.",
+        "Generate a stock list and inventory valuation or summary for review."
+      ]
+    },
+    {
+      "title": "9. Expenses and Daily Closing",
+      "points": [
+        "Record expense date, category, amount, payment method, reference, and notes.",
+        "Provide a daily closing workflow that summarizes opening cash, collections by payment method, expenses, cash counted, and any variance.",
+        "Allow authorized staff to save and review a closing record for a business date.",
+        "Retain closing history for manager review and period reporting."
+      ]
+    },
+    {
+      "title": "10. Dashboard, Reports, and Search",
+      "points": [
+        "Show at-a-glance member totals, active members, today's visits and collections, outstanding dues, low stock, expiries, leads, and follow-up workload.",
+        "Offer chart and tabular summaries for revenue, attendance, memberships, consumption, and staff performance where data is available.",
+        "Provide global search for members, products, and receipts, with direct navigation to matching records.",
+        "Allow the user to export selected operational reports as CSV and printable PDF files."
+      ]
+    },
+    {
+      "title": "11. Reminders and Communications",
+      "points": [
+        "Identify members approaching refill or renewal, members with overdue balances, upcoming follow-ups, and other center-defined reminders.",
+        "Provide message templates and audience segmentation for common cases such as welcome, payment reminder, renewal, and absence follow-up.",
+        "Keep a record of messages composed or sent by the application when a messaging provider is connected.",
+        "External delivery through WhatsApp, SMS, email, or push notifications requires approved provider accounts, credentials, and backend integration."
+      ]
+    },
+    {
+      "title": "12. Member, Coach, and Guest Experiences",
+      "points": [
+        "Provide member-facing views for membership status, visits, package information, payments, and wellness progress, subject to identity verification.",
+        "Provide coach-facing views for assigned members, attendance, progress measurements, follow-up notes, and schedules.",
+        "Provide a guest registration workflow that captures contact consent and source before staff follow-up.",
+        "Production mobile access, QR identity, and protected personal data require server-side identity, authorization, and API services."
+      ]
+    },
+    {
+      "title": "13. Backup, Restore, and Export",
+      "points": [
+        "Persist demo business data in the current browser so changes remain after a page refresh on that browser and origin.",
+        "Download a complete versioned JSON backup containing the center's demo datasets and restore from a valid backup file.",
+        "Create a local browser snapshot and display its last saved time; label local-only storage accurately.",
+        "Export available report records to CSV and PDF, and provide printable invoices or statements where implemented.",
+        "Automated off-site backups, encryption at rest, recovery guarantees, and multi-device synchronization are production backend requirements, not provided by local browser storage."
+      ]
+    },
+    {
+      "title": "14. Usability, Accessibility, and Data Quality",
+      "points": [
+        "Use consistent shared form controls for buttons, text inputs, text areas, selects, checkboxes, labels, dialogs, tables, and status indicators.",
+        "Provide field labels, required-field feedback, validation messages, keyboard focus visibility, and accessible names for icon-only actions.",
+        "Support common desktop and mobile viewport sizes with readable content, usable dialogs, and responsive data tables.",
+        "Validate required contact and transaction fields, parse numeric values deliberately, and confirm destructive actions.",
+        "Keep local dates and money formats clear and consistent with the center's configured locale and currency."
+      ]
+    },
+    {
+      "title": "15. Demo Boundaries and Production Decisions",
+      "points": [
+        "The supplied panel is an interactive front-end demonstration using seeded sample records and browser localStorage; it is not a production multi-user database.",
+        "Clearing site data, changing browser profile, or using another device can remove or separate local demo data. Download JSON backups before clearing browser data.",
+        "Cloud backups, Google sign-in, WhatsApp delivery, live QR/barcode hardware, payment gateway processing, and secure cross-device user accounts are not activated without external services and credentials.",
+        "Before production, confirm hosting, database, user roles, branch rules, retention policy, consent text, payment and messaging providers, backup schedule, and data migration needs.",
+        "Client acceptance should include review of role permissions, common registration and collection workflows, attendance accuracy, stock reconciliation, exports, and mobile behavior."
+      ]
+    }
+  ]
+}
