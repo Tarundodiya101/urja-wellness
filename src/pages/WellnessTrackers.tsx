@@ -47,7 +47,7 @@ export default function WellnessTrackers() {
         {/* Section 8: Nutrition Module */}
         <div className="card space-y-4 border-l-4 border-emerald-500">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiCoffee className="text-emerald-600" /> 🍎 Section 8: Nutrition Module & Food Record
+            <FiCoffee className="text-emerald-600" /> Section 8: Nutrition Module & Food Record
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
@@ -89,7 +89,7 @@ export default function WellnessTrackers() {
           {/* Hydration */}
           <div className="card space-y-4 border-l-4 border-blue-500">
             <h3 className="section-title flex items-center gap-2 mb-0">
-              <FiSun className="text-blue-600" /> 💧 Section 9: Hydration Tracker
+              <FiSun className="text-blue-600" /> Section 9: Hydration Tracker
             </h3>
             <div className="grid grid-cols-3 gap-3 text-center text-xs">
               <div className="p-3 bg-blue-50 rounded-xl">
@@ -113,7 +113,7 @@ export default function WellnessTrackers() {
           {/* Activity */}
           <div className="card space-y-4 border-l-4 border-orange-500">
             <h3 className="section-title flex items-center gap-2 mb-0">
-              <FiActivity className="text-orange-600" /> 🚶 Section 10: Daily Activity Tracker
+              <FiActivity className="text-orange-600" /> Section 10: Daily Activity Tracker
             </h3>
             <div className="grid grid-cols-3 gap-3 text-center text-xs">
               <div className="p-3 bg-orange-50 rounded-xl">
@@ -132,12 +132,12 @@ export default function WellnessTrackers() {
           </div>
         </div>
 
-        {/* Section 11 & 12: Sleep 😴 & Stress 🧠 */}
+        {/* Section 11 & 12: Sleep & Stress */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Sleep */}
           <div className="card space-y-4 border-l-4 border-purple-500">
             <h3 className="section-title flex items-center gap-2 mb-0">
-              <FiMoon className="text-purple-600" /> 😴 Section 11: Sleep Tracker
+              <FiMoon className="text-purple-600" /> Section 11: Sleep Tracker
             </h3>
             <div className="grid grid-cols-3 gap-3 text-center text-xs">
               <div className="p-3 bg-purple-50 rounded-xl">
@@ -158,7 +158,7 @@ export default function WellnessTrackers() {
           {/* Stress */}
           <div className="card space-y-4 border-l-4 border-teal-500">
             <h3 className="section-title flex items-center gap-2 mb-0">
-              <FiSmile className="text-teal-600" /> 🧠 Section 12: Stress & Mental Wellness Tracker
+              <FiSmile className="text-teal-600" /> Section 12: Stress & Mental Wellness Tracker
             </h3>
             <div className="p-3 bg-teal-50 rounded-xl text-xs space-y-2">
               <div className="flex justify-between items-center font-bold text-teal-900">

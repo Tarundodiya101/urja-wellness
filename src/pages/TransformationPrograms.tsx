@@ -30,7 +30,7 @@ export default function TransformationPrograms() {
       {/* Specification Section 23: 30-DAY PROGRAM */}
       <div className="card space-y-4 border-l-4 border-emerald-500">
         <h3 className="section-title flex items-center gap-2 mb-0">
-          <FiCalendar className="text-emerald-600" /> 📅 Master Section 23: 30-Day Wellness Program Roadmap
+          <FiCalendar className="text-emerald-600" /> Master Section 23: 30-Day Wellness Program Roadmap
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
@@ -67,7 +67,7 @@ export default function TransformationPrograms() {
       {/* Specification Section 24: 90-DAY TRANSFORMATION */}
       <div className="card space-y-4 border-l-4 border-navy-900">
         <h3 className="section-title flex items-center gap-2 mb-0">
-          <FiAward className="text-navy-900" /> 🏆 Master Section 24: 90-Day Lifestyle Transformation Roadmap
+          <FiAward className="text-navy-900" /> Master Section 24: 90-Day Lifestyle Transformation Roadmap
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">

@@ -14,20 +14,20 @@ export default function Sidebar({ open, onToggle }: { open: boolean; onToggle: (
   const userRole = (user?.role || 'OWNER').toUpperCase();
 
   const allNavItems = [
-    { labelGUJ: '👑 ઓનર ડેશબોર્ડ', labelENG: '👑 OWNER DASHBOARD', icon: FiHome, path: '/dashboard', roles: ['OWNER', 'ADMIN', 'STAFF'] },
-    { labelGUJ: '👨‍🏫 કોચ ડેશબોર્ડ', labelENG: '👨‍🏫 COACH DASHBOARD', icon: FiUsers, path: '/coach-dashboard', roles: ['OWNER', 'ADMIN', 'COACH'] },
-    { labelGUJ: '👤 સભ્ય રજીસ્ટ્રેશન', labelENG: '👤 MEMBER REGISTRATION', icon: FiUsers, path: '/members', roles: ['OWNER', 'ADMIN', 'COACH', 'STAFF'] },
-    { labelGUJ: '📲 QR હાજરી', labelENG: '📲 QR ATTENDANCE', icon: FiCheckSquare, path: '/attendance', roles: ['OWNER', 'ADMIN', 'COACH', 'STAFF'] },
-    { labelGUJ: '📸 ફોટો રિવ્યૂ', labelENG: '📸 PHOTO MANAGEMENT', icon: FiCamera, path: '/photo-management', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
-    { labelGUJ: '📏 બોડી માપન', labelENG: '📏 BODY MEASUREMENTS', icon: FiTrendingUp, path: '/body-measurements', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
-    { labelGUJ: '🍎 ન્યુટ્રિશન અને વેલનેસ', labelENG: '🍎 NUTRITION & WELLNESS', icon: FiCoffee, path: '/wellness-trackers', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
-    { labelGUJ: '✅ ૮-પોઇન્ટ હેબિટ ટ્રેકર', labelENG: '✅ HABIT TRACKER', icon: FiCheckCircle, path: '/habits-tracker', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
-    { labelGUJ: '💰 પેમેન્ટ અને લેજર', labelENG: '💰 PAYMENT & LEDGER', icon: FiCreditCard, path: '/payments-ledger', roles: ['OWNER', 'ADMIN', 'STAFF'] },
-    { labelGUJ: '📦 સ્ટોક અને રીફિલ', labelENG: '📦 INVENTORY & REFILL', icon: FiPackage, path: '/inventory-refill', roles: ['OWNER', 'ADMIN', 'STAFF'] },
-    { labelGUJ: '📱 વોટ્સએપ રીમાઇન્ડર', labelENG: '📱 WHATSAPP REMINDERS', icon: FiMessageSquare, path: '/whatsapp-reminders', roles: ['OWNER', 'ADMIN', 'COACH', 'STAFF'] },
-    { labelGUJ: '📞 ફોલો-અપ સીઆરએમ', labelENG: '📞 FOLLOW-UP SYSTEM', icon: FiPhoneCall, path: '/followup-system', roles: ['OWNER', 'ADMIN', 'COACH'] },
-    { labelGUJ: '🏆 ૩૦ અને ૯૦ દિવસ પ્રોગ્રામ', labelENG: '🏆 30 & 90-DAY PROGRAM', icon: FiAward, path: '/transformation-programs', roles: ['OWNER', 'ADMIN', 'COACH'] },
-    { labelGUJ: '📊 રિપોર્ટ્સ ડાઉનલોડ', labelENG: '📊 REPORTS & DOWNLOAD', icon: FiFileText, path: '/reports-center', roles: ['OWNER', 'ADMIN', 'COACH'] },
+    { labelGUJ: 'ઓનર ડેશબોર્ડ', labelENG: 'OWNER DASHBOARD', icon: FiHome, path: '/dashboard', roles: ['OWNER', 'ADMIN', 'STAFF'] },
+    { labelGUJ: 'કોચ ડેશબોર્ડ', labelENG: 'COACH DASHBOARD', icon: FiUsers, path: '/coach-dashboard', roles: ['OWNER', 'ADMIN', 'COACH'] },
+    { labelGUJ: 'સભ્ય રજીસ્ટ્રેશન', labelENG: 'MEMBER REGISTRATION', icon: FiUsers, path: '/members', roles: ['OWNER', 'ADMIN', 'COACH', 'STAFF'] },
+    { labelGUJ: 'QR હાજરી', labelENG: 'QR ATTENDANCE', icon: FiCheckSquare, path: '/attendance', roles: ['OWNER', 'ADMIN', 'COACH', 'STAFF'] },
+    { labelGUJ: 'ફોટો રિવ્યૂ', labelENG: 'PHOTO MANAGEMENT', icon: FiCamera, path: '/photo-management', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
+    { labelGUJ: 'બોડી માપન', labelENG: 'BODY MEASUREMENTS', icon: FiTrendingUp, path: '/body-measurements', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
+    { labelGUJ: 'ન્યુટ્રિશન અને વેલનેસ', labelENG: 'NUTRITION & WELLNESS', icon: FiCoffee, path: '/wellness-trackers', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
+    { labelGUJ: '૮-પોઇન્ટ હેબિટ ટ્રેકર', labelENG: 'HABIT TRACKER', icon: FiCheckCircle, path: '/habits-tracker', roles: ['OWNER', 'ADMIN', 'COACH', 'MEMBER'] },
+    { labelGUJ: 'પેમેન્ટ અને લેજર', labelENG: 'PAYMENT & LEDGER', icon: FiCreditCard, path: '/payments-ledger', roles: ['OWNER', 'ADMIN', 'STAFF'] },
+    { labelGUJ: 'સ્ટોક અને રીફિલ', labelENG: 'INVENTORY & REFILL', icon: FiPackage, path: '/inventory-refill', roles: ['OWNER', 'ADMIN', 'STAFF'] },
+    { labelGUJ: 'વોટ્સએપ રીમાઇન્ડર', labelENG: 'WHATSAPP REMINDERS', icon: FiMessageSquare, path: '/whatsapp-reminders', roles: ['OWNER', 'ADMIN', 'COACH', 'STAFF'] },
+    { labelGUJ: 'ફોલો-અપ સીઆરએમ', labelENG: 'FOLLOW-UP SYSTEM', icon: FiPhoneCall, path: '/followup-system', roles: ['OWNER', 'ADMIN', 'COACH'] },
+    { labelGUJ: '૩૦ અને ૯૦ દિવસ પ્રોગ્રામ', labelENG: '30 & 90-DAY PROGRAM', icon: FiAward, path: '/transformation-programs', roles: ['OWNER', 'ADMIN', 'COACH'] },
+    { labelGUJ: 'રિપોર્ટ્સ ડાઉનલોડ', labelENG: 'REPORTS & DOWNLOAD', icon: FiFileText, path: '/reports-center', roles: ['OWNER', 'ADMIN', 'COACH'] },
   ];
 
   // Strictly filter navigation items based on User Role

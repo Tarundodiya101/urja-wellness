@@ -166,12 +166,12 @@ export default function WhatsAppReminders() {
       <div className="flex flex-wrap gap-2">
         {[
           { key: 'ALL', label: 'All Reminders (6)' },
-          { key: 'PAYMENT', label: '💰 Payment Due' },
-          { key: 'RENEWAL', label: '🌿 Renewal Due' },
-          { key: 'ABSENT', label: '🔴 Absent Alert' },
-          { key: 'REFILL', label: '🥤 Refill Due' },
-          { key: 'PROGRESS', label: '📸 Progress Review' },
-          { key: 'BIRTHDAY', label: '🎂 Birthday Wish' },
+          { key: 'PAYMENT', label: 'Payment Due' },
+          { key: 'RENEWAL', label: 'Renewal Due' },
+          { key: 'ABSENT', label: 'Absent Alert' },
+          { key: 'REFILL', label: 'Refill Due' },
+          { key: 'PROGRESS', label: 'Progress Review' },
+          { key: 'BIRTHDAY', label: 'Birthday Wish' },
         ].map((tab) => (
           <button
             key={tab.key}

@@ -92,7 +92,7 @@ export default function ReportsCenter() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="card space-y-3 border-l-4 border-blue-500">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiDownload className="text-blue-600" /> ⬇️ PDF Report Download Center
+            <FiDownload className="text-blue-600" /> PDF Report Download Center
           </h3>
           <div className="grid grid-cols-2 gap-2 text-xs">
             {[
@@ -105,7 +105,7 @@ export default function ReportsCenter() {
                 onClick={() => handleDownloadPDF(r)}
                 className="btn-outline py-2 px-3 text-xs justify-center text-blue-800 border-blue-200 hover:bg-blue-50"
               >
-                ⬇️ {r}
+                {r}
               </button>
             ))}
           </div>
@@ -114,7 +114,7 @@ export default function ReportsCenter() {
         {/* Excel Downloads */}
         <div className="card space-y-3 border-l-4 border-emerald-500">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiDownload className="text-emerald-600" /> ⬇️ Excel Export Center
+            <FiDownload className="text-emerald-600" /> Excel Export Center
           </h3>
           <div className="grid grid-cols-2 gap-2 text-xs">
             {['Member List', 'Attendance Summary', 'Payment Ledger', 'Stock Report', 'Follow-up List'].map(x => (
@@ -123,7 +123,7 @@ export default function ReportsCenter() {
                 onClick={() => handleExportExcel(x)}
                 className="btn-secondary py-2 px-3 text-xs justify-center"
               >
-                📊 Export {x} (.xlsx)
+                Export {x} (.xlsx)
               </button>
             ))}
           </div>
@@ -135,17 +135,17 @@ export default function ReportsCenter() {
         {/* Upload Center */}
         <div className="card space-y-3 border-l-4 border-purple-500">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiUpload className="text-purple-600" /> ⬆️ Upload Center for {member.name}
+            <FiUpload className="text-purple-600" /> Upload Center for {member.name}
           </h3>
           <form onSubmit={handleUploadDocument} className="space-y-3 text-xs">
             <div>
               <label className="label text-[10px]">Select Document Category</label>
               <select className="input-field">
-                <option value="Photo">⬆️ Photo (Front/Side/Back)</option>
-                <option value="Measurement">⬆️ Measurement Report</option>
-                <option value="Analysis">⬆️ Body Analysis Report</option>
-                <option value="FoodRecord">⬆️ Food Record</option>
-                <option value="DoctorNote">⬆️ Doctor / Coach Note</option>
+                <option value="Photo">Photo (Front/Side/Back)</option>
+                <option value="Measurement">Measurement Report</option>
+                <option value="Analysis">Body Analysis Report</option>
+                <option value="FoodRecord">Food Record</option>
+                <option value="DoctorNote">Doctor / Coach Note</option>
               </select>
             </div>
             <input type="file" className="text-xs text-gray-500 bg-gray-50 p-2 rounded-xl border w-full" />
@@ -156,7 +156,7 @@ export default function ReportsCenter() {
         {/* Specification Section 22: Member-wise Storage Layout */}
         <div className="card space-y-3 border-l-4 border-navy-900">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiFolder className="text-navy-900" /> 📁 Specification Section 22: Isolated Member Storage Layout
+            <FiFolder className="text-navy-900" /> Isolated Member Storage Layout
           </h3>
           <div className="p-3 bg-navy-950 text-emerald-400 font-mono text-xs rounded-xl space-y-1">
             <div className="font-bold text-white">URJA / Members /</div>
