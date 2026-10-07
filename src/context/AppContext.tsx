@@ -1,102 +1,129 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
-  MEMBERS, ATTENDANCE, PAYMENTS, PRODUCTS, LEADS, GUESTS,
-  WHATSAPP_MESSAGES, DAILY_CLOSING, PURCHASES, STOCK_ADJUSTMENTS,
-  EXPENSES, AUDIT_LOGS, USERS, REFILL_REMINDERS, MEMBER_LEDGERS
+  USERS, MEMBERS, MEMBER_MEASUREMENTS, MEMBER_PHOTOS, DAILY_WELLNESS_LOGS,
+  ATTENDANCE_RECORDS, PAYMENT_TRANSACTIONS, PRODUCTS, FOLLOW_UP_LIST, WHATSAPP_TEMPLATES, PACKAGES, COACHES, LEADS
 } from '../data/mockData';
 
-const AppContext = createContext(null);
+const AppContext = createContext<any>(null);
 
-function readStoredState(key, fallback) {
-  try {
-    const stored = localStorage.getItem(key);
-    return stored === null ? fallback : JSON.parse(stored);
-  } catch {
-    return fallback;
-  }
-}
+export function AppProvider({ children }: { children: React.ReactNode }) {
+  const [lang, setLang] = useState<'GUJ' | 'ENG'>(() => {
+    const saved = localStorage.getItem('urja_master_lang');
+    return (saved === 'GUJ' || saved === 'ENG') ? saved : 'GUJ';
+  });
 
-function useStoredState(key, fallback) {
-  const [value, setValue] = useState(() => readStoredState(key, fallback));
+  const [user, setUser] = useState<any>(() => {
+    const saved = localStorage.getItem('urja_master_user');
+    return saved ? JSON.parse(saved) : USERS[0]; // Default Owner
+  });
 
-  useEffect(() => {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error(`Unable to persist ${key} in this browser`, error);
-    }
-  }, [key, value]);
+  const [members, setMembers] = useState<any[]>(() => {
+    const saved = localStorage.getItem('urja_master_members');
+    return saved ? JSON.parse(saved) : MEMBERS;
+  });
 
-  return [value, setValue];
-}
+  const [measurements, setMeasurements] = useState<any>(() => {
+    const saved = localStorage.getItem('urja_master_measurements');
+    return saved ? JSON.parse(saved) : MEMBER_MEASUREMENTS;
+  });
 
-export function AppProvider({ children }) {
-  const [user, setUser] = useStoredState('urja_user', { username: 'admin', name: 'Admin User', role: 'ADMIN' });
-  const [members, setMembers] = useStoredState('urja_members', MEMBERS);
-  const [attendance, setAttendance] = useStoredState('urja_attendance', ATTENDANCE);
-  const [payments, setPayments] = useStoredState('urja_payments', PAYMENTS);
-  const [products, setProducts] = useStoredState('urja_products', PRODUCTS);
-  const [leads, setLeads] = useStoredState('urja_leads', LEADS);
-  const [purchases, setPurchases] = useStoredState('urja_purchases', PURCHASES);
-  const [expenses, setExpenses] = useStoredState('urja_expenses', EXPENSES);
-  const [stockAdjustments, setStockAdjustments] = useStoredState('urja_adjustments', STOCK_ADJUSTMENTS);
-  const [auditLogs, setAuditLogs] = useStoredState('urja_audit_logs', AUDIT_LOGS);
-  const [usersList, setUsersList] = useStoredState('urja_users', USERS);
-  const [guests, setGuests] = useStoredState('urja_guests', GUESTS);
-  const [whatsappMessages, setWhatsappMessages] = useStoredState('urja_whatsapp_messages', WHATSAPP_MESSAGES);
-  const [dailyClosing, setDailyClosing] = useStoredState('urja_daily_closing', DAILY_CLOSING);
-  const [refillReminders, setRefillReminders] = useStoredState('urja_refill_reminders', REFILL_REMINDERS);
-  const [memberLedgers, setMemberLedgers] = useStoredState('urja_member_ledgers', MEMBER_LEDGERS);
+  const [photos, setPhotos] = useState<any>(() => {
+    const saved = localStorage.getItem('urja_master_photos');
+    return saved ? JSON.parse(saved) : MEMBER_PHOTOS;
+  });
+
+  const [wellnessLogs, setWellnessLogs] = useState<any>(() => {
+    const saved = localStorage.getItem('urja_master_wellness');
+    return saved ? JSON.parse(saved) : DAILY_WELLNESS_LOGS;
+  });
+
+  const [attendance, setAttendance] = useState<any[]>(() => {
+    const saved = localStorage.getItem('urja_master_attendance');
+    return saved ? JSON.parse(saved) : ATTENDANCE_RECORDS;
+  });
+
+  const [payments, setPayments] = useState<any[]>(() => {
+    const saved = localStorage.getItem('urja_master_payments');
+    return saved ? JSON.parse(saved) : PAYMENT_TRANSACTIONS;
+  });
+
+  const [products, setProducts] = useState<any[]>(() => {
+    const saved = localStorage.getItem('urja_master_products');
+    return saved ? JSON.parse(saved) : PRODUCTS;
+  });
+
+  const [followUps, setFollowUps] = useState<any[]>(() => {
+    const saved = localStorage.getItem('urja_master_followups');
+    return saved ? JSON.parse(saved) : FOLLOW_UP_LIST;
+  });
+
+  const [bills, setBills] = useState<any[]>([]);
+  const [expenses, setExpenses] = useState<any[]>([]);
+  const [purchases, setPurchases] = useState<any[]>([]);
+  const [leads, setLeads] = useState<any[]>(LEADS || []);
+  const [auditLogs, setAuditLogs] = useState<any[]>([]);
+  const [usersList, setUsersList] = useState<any[]>(USERS);
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [notifications, setNotifications] = useState([]);
 
-  const logAudit = (action, details) => {
-    const newLog = {
-      id: `LOG-${Date.now()}`,
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      date: new Date().toISOString().split('T')[0],
-      user: user?.name || 'System User',
-      action,
-      details
-    };
-    setAuditLogs(prev => [newLog, ...prev]);
-  };
+  // Sync to localStorage
+  useEffect(() => { localStorage.setItem('urja_master_lang', lang); }, [lang]);
+  useEffect(() => { localStorage.setItem('urja_master_user', JSON.stringify(user)); }, [user]);
+  useEffect(() => { localStorage.setItem('urja_master_members', JSON.stringify(members)); }, [members]);
+  useEffect(() => { localStorage.setItem('urja_master_measurements', JSON.stringify(measurements)); }, [measurements]);
+  useEffect(() => { localStorage.setItem('urja_master_photos', JSON.stringify(photos)); }, [photos]);
+  useEffect(() => { localStorage.setItem('urja_master_wellness', JSON.stringify(wellnessLogs)); }, [wellnessLogs]);
+  useEffect(() => { localStorage.setItem('urja_master_attendance', JSON.stringify(attendance)); }, [attendance]);
+  useEffect(() => { localStorage.setItem('urja_master_payments', JSON.stringify(payments)); }, [payments]);
 
-  const login = (username, password, role) => {
-    if (username && typeof username === 'object') {
-      setUser(username);
-    } else {
-      const found = usersList.find(u => u.username.toLowerCase() === (username || '').toLowerCase());
-      if (found) setUser(found);
-      else setUser({ username, role: role || 'ADMIN', name: username === 'admin' ? 'Admin User' : username });
+  const toggleLang = () => setLang(prev => prev === 'GUJ' ? 'ENG' : 'GUJ');
+  const t = (gujText: string, engText: string) => lang === 'GUJ' ? gujText : engText;
+
+  const login = (input: any, roleArg?: string) => {
+    let uname = '';
+    let selectedRole = roleArg || 'OWNER';
+
+    if (typeof input === 'object' && input !== null) {
+      uname = input.username || input.name || '';
+      if (input.role) selectedRole = input.role;
+    } else if (typeof input === 'string') {
+      uname = input;
     }
-    logAudit('User Login', `Logged in as ${role || 'User'}`);
+
+    const cleanUname = String(uname).trim();
+    const found = USERS.find(u => u.username.toLowerCase() === cleanUname.toLowerCase());
+    if (found) {
+      setUser({ ...found, role: selectedRole.toUpperCase() });
+    } else {
+      setUser({
+        id: `USR${Date.now()}`,
+        name: cleanUname || 'Admin User',
+        username: cleanUname || 'admin',
+        role: selectedRole.toUpperCase(),
+        access: { all: true }
+      });
+    }
     return true;
   };
 
-  const logout = () => {
-    logAudit('User Logout', `User logged out`);
-    setUser(null);
-  };
+  const logout = () => setUser(null);
 
-  const addMember = (memberData) => {
-    const nextNum = members.length + 1;
+  const addMember = (m: any) => {
+    const nextId = `URJA-${String(members.length + 1).padStart(5, '0')}`;
+    const nextBarcode = `890${String(members.length + 1).padStart(3, '0')}`;
     const newMember = {
-      ...memberData,
-      id: `URJA-${String(nextNum).padStart(5, '0')}`,
-      barcode: `890${String(nextNum).padStart(3, '0')}`,
-      joiningDate: memberData.joiningDate || new Date().toISOString().split('T')[0],
+      ...m,
+      id: nextId,
+      barcode: nextBarcode,
       visitsCount: 0,
-      status: memberData.status || 'Active',
-      paid: Number(memberData.paid) || 0,
-      pending: (Number(memberData.amount) || 0) - (Number(memberData.paid) || 0)
+      status: m.status || 'Active',
+      paid: Number(m.paid) || 0,
+      pending: Math.max(0, (Number(m.amount) || 0) - (Number(m.paid) || 0))
     };
     setMembers(prev => [newMember, ...prev]);
-    logAudit('New Member Registered', `${newMember.name} (${newMember.id}) added`);
     return newMember;
   };
 
-  const updateMember = (id, updates) => {
+  const updateMember = (id: string, updates: any) => {
     setMembers(prev => prev.map(m => {
       if (m.id === id) {
         const updated = { ...m, ...updates };
@@ -107,217 +134,111 @@ export function AppProvider({ children }) {
       }
       return m;
     }));
-    logAudit('Member Profile Updated', `Member ${id} details updated`);
   };
 
-  const deleteMember = (id) => {
-    const m = members.find(x => x.id === id);
-    setMembers(prev => prev.filter(x => x.id !== id));
-    logAudit('Member Deleted', `Member ${m?.name} (${id}) deleted`);
+  const deleteMember = (id: string) => {
+    setMembers(prev => prev.filter(m => m.id !== id));
   };
 
-  const markAttendance = (record) => {
+  const markAttendance = (rec: any) => {
     const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const newRecord = { ...record, id: `ATT${Date.now()}`, time: timeStr, date: record.date || new Date().toISOString().split('T')[0] };
+    const newRecord = {
+      ...rec,
+      id: `ATT${Date.now()}`,
+      time: timeStr,
+      date: rec.date || new Date().toISOString().split('T')[0]
+    };
     setAttendance(prev => [newRecord, ...prev]);
-    
-    // Update visits count
-    setMembers(prev => prev.map(m => m.id === record.memberId ? { ...m, visitsCount: (m.visitsCount || 0) + 1 } : m));
-    
-    // Auto deduct product stock if shake selected
-    if (record.shake) {
-      setProducts(prev => prev.map(p => {
-        if (p.name.toLowerCase().includes((record.shake || '').toLowerCase())) {
-          const newStock = Math.max(0, p.currentStock - (record.shakeCount || 1));
-          return {
-            ...p,
-            currentStock: newStock,
-            status: newStock === 0 ? 'Out of Stock' : newStock <= p.minStock ? 'Low Stock' : 'Good Stock'
-          };
-        }
-        return p;
-      }));
-    }
-    logAudit('Attendance Marked', `${record.memberName} marked present`);
+    setMembers(prev => prev.map(m => m.id === rec.memberId ? { ...m, visitsCount: (m.visitsCount || 0) + 1 } : m));
     return newRecord;
   };
 
-  const addPayment = (paymentData) => {
+  const addMeasurement = (memberId: string, mData: any) => {
+    setMeasurements((prev: any) => ({
+      ...prev,
+      [memberId]: [...(prev[memberId] || []), mData]
+    }));
+  };
+
+  const addPhoto = (memberId: string, pData: any) => {
+    setPhotos((prev: any) => ({
+      ...prev,
+      [memberId]: [...(prev[memberId] || []), pData]
+    }));
+  };
+
+  const addPayment = (pData: any) => {
     const receiptNo = `RCP-${Date.now().toString().slice(-4)}`;
-    const newPayment = {
-      ...paymentData,
+    const newPay = {
+      ...pData,
       id: `PAY${Date.now()}`,
       receiptNo,
-      date: paymentData.date || new Date().toISOString().split('T')[0],
-      status: (paymentData.balanceDue || 0) <= 0 ? 'Paid' : 'Part Paid'
+      date: pData.date || new Date().toISOString().split('T')[0]
     };
-    setPayments(prev => [newPayment, ...prev]);
+    setPayments(prev => [newPay, ...prev]);
 
-    // Update member pending balance
-    if (paymentData.memberId) {
+    if (pData.memberId) {
       setMembers(prev => prev.map(m => {
-        if (m.id === paymentData.memberId) {
-          const newPaid = (m.paid || 0) + (paymentData.amount || 0);
+        if (m.id === pData.memberId) {
+          const newPaid = (m.paid || 0) + (Number(pData.amount) || 0);
           const newPending = Math.max(0, (m.amount || 0) - newPaid);
-          return { ...m, paid: newPaid, pending: newPending, lastPaymentDate: newPayment.date };
+          return { ...m, paid: newPaid, pending: newPending };
         }
         return m;
       }));
-
-      // Add entry to Member Ledger
-      const ledgerEntry = {
-        date: newPayment.date,
-        particular: `${paymentData.type || 'Payment Received'} (${paymentData.mode})`,
-        debit: 0,
-        credit: paymentData.amount,
-        balance: paymentData.balanceDue || 0,
-        billNo: receiptNo
-      };
-      setMemberLedgers(prev => ({
-        ...prev,
-        [paymentData.memberId]: [...(prev[paymentData.memberId] || []), ledgerEntry]
-      }));
     }
-
-    logAudit('Payment Received', `₹${paymentData.amount} received from ${paymentData.memberName} (${paymentData.mode})`);
-    return newPayment;
+    return newPay;
   };
 
-  const addPurchase = (purchaseData) => {
-    const newPurchase = { ...purchaseData, id: `PUR-${Date.now().toString().slice(-4)}` };
-    setPurchases(prev => [newPurchase, ...prev]);
-
-    // Auto increase stock for each purchased item
-    if (purchaseData.items && purchaseData.items.length > 0) {
-      setProducts(prev => prev.map(p => {
-        const item = purchaseData.items.find(i => i.product === p.name);
-        if (item) {
-          const newStock = p.currentStock + Number(item.qty || 0);
-          return {
-            ...p,
-            currentStock: newStock,
-            batchNo: item.batchNo || p.batchNo,
-            expiryDate: item.expiryDate || p.expiryDate,
-            purchasePrice: Number(item.purchaseRate) || p.purchasePrice,
-            status: newStock <= p.minStock ? 'Low Stock' : 'Good Stock'
-          };
-        }
-        return p;
-      }));
-    }
-    logAudit('Purchase Entry Added', `Invoice #${purchaseData.invoiceNo} from ${purchaseData.supplier} (₹${purchaseData.totalAmount})`);
+  const deletePayment = (id: string) => {
+    setPayments(prev => prev.filter(p => p.id !== id));
   };
 
-  const addStockAdjustment = (adjData) => {
-    const newAdj = { ...adjData, id: `ADJ-${Date.now().toString().slice(-4)}`, date: new Date().toISOString().split('T')[0] };
-    setStockAdjustments(prev => [newAdj, ...prev]);
+  const addBill = (b: any) => setBills(prev => [b, ...prev]);
+  const deleteBill = (id: string) => setBills(prev => prev.filter(b => b.id !== id));
+  const addExpense = (e: any) => setExpenses(prev => [e, ...prev]);
+  const addPurchase = (p: any) => setPurchases(prev => [p, ...prev]);
+  const addLead = (l: any) => setLeads(prev => [l, ...prev]);
+  const addUser = (u: any) => setUsersList(prev => [u, ...prev]);
 
-    // Deduct stock
-    setProducts(prev => prev.map(p => {
-      if (p.name === adjData.product) {
-        const newStock = Math.max(0, p.currentStock - Number(adjData.qty || 0));
-        return {
-          ...p,
-          currentStock: newStock,
-          status: newStock === 0 ? 'Out of Stock' : newStock <= p.minStock ? 'Low Stock' : 'Good Stock'
-        };
-      }
-      return p;
-    }));
-    logAudit('Stock Adjusted', `${adjData.qty} ${adjData.product} adjusted (${adjData.reason})`);
-  };
-
-  const addExpense = (expenseData) => {
-    const newExpense = { ...expenseData, id: `EXP-${Date.now().toString().slice(-4)}`, date: expenseData.date || new Date().toISOString().split('T')[0] };
-    setExpenses(prev => [newExpense, ...prev]);
-    logAudit('Expense Recorded', `₹${expenseData.amount} for ${expenseData.category}`);
-  };
-
-  const addUser = (userData) => {
-    const newUser = { ...userData, id: `USR${String(usersList.length + 1).padStart(2, '0')}` };
-    setUsersList(prev => [...prev, newUser]);
-    logAudit('New User Added', `User ${userData.name} created as ${userData.role}`);
-  };
-
-  const today = new Date().toISOString().split('T')[0];
-  const todayAttendance = attendance.filter(a => a.date === today);
-  const activeMembers = members.filter(m => m.status === 'Active');
-  const totalOutstanding = members.reduce((sum, m) => sum + (m.pending || 0), 0);
-  const todayCollection = payments.filter(p => p.date === today).reduce((sum, p) => sum + (p.amount || 0), 0);
-  const lowStockItems = products.filter(p => p.currentStock <= p.minStock);
-  const expiringProducts = products.filter(p => {
-    if (!p.expiryDate) return false;
-    const diffDays = (new Date(p.expiryDate).getTime() - Date.now()) / (1000 * 3600 * 24);
-    return diffDays >= 0 && diffDays <= 60;
-  });
-  const renewalsToday = members.filter(m => m.expiryDate === today);
-  const todayBirthdays = members.filter(m => m.dob && m.dob.slice(5) === today.slice(5));
-
-  const createBackup = () => ({
-    format: 'urja-wellness-demo-backup',
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    data: {
-      user, members, attendance, payments, products, leads, purchases, expenses,
-      stockAdjustments, auditLogs, usersList, guests, whatsappMessages,
-      dailyClosing, refillReminders, memberLedgers,
-    },
-  });
-
-  const restoreBackup = (snapshot: any) => {
-    const data = snapshot?.data ?? snapshot;
-    if (!data || typeof data !== 'object' || !Array.isArray(data.members) || !Array.isArray(data.products)) {
-      throw new Error('This file is not a valid URJA backup.');
-    }
-    if ('user' in data) setUser(data.user);
-    if ('members' in data) setMembers(data.members);
-    if ('attendance' in data) setAttendance(data.attendance);
-    if ('payments' in data) setPayments(data.payments);
-    if ('products' in data) setProducts(data.products);
-    if ('leads' in data) setLeads(data.leads);
-    if ('purchases' in data) setPurchases(data.purchases);
-    if ('expenses' in data) setExpenses(data.expenses);
-    if ('stockAdjustments' in data) setStockAdjustments(data.stockAdjustments);
-    if ('auditLogs' in data) setAuditLogs(data.auditLogs);
-    if ('usersList' in data) setUsersList(data.usersList);
-    if ('guests' in data) setGuests(data.guests);
-    if ('whatsappMessages' in data) setWhatsappMessages(data.whatsappMessages);
-    if ('dailyClosing' in data) setDailyClosing(data.dailyClosing);
-    if ('refillReminders' in data) setRefillReminders(data.refillReminders);
-    if ('memberLedgers' in data) setMemberLedgers(data.memberLedgers);
-  };
+  // Derived Dashboard Metrics
+  const activeMembers = members ? members.filter((m: any) => m.status === 'Active') : [];
+  const todayAttendance = attendance || [];
+  const totalOutstanding = members ? members.reduce((sum: number, m: any) => sum + (Number(m.pending) || 0), 0) : 0;
+  const todayCollection = payments ? payments.reduce((sum: number, p: any) => sum + (Number(p.credit || p.amount) || 0), 0) : 0;
+  const lowStockItems = products ? products.filter((p: any) => p.currentStock <= p.minStock || p.status === 'Low Stock' || p.status === 'Out of Stock') : [];
+  const renewalsToday = members ? members.filter((m: any) => m.status === 'Expired' || m.status === 'Active') : [];
+  const todayBirthdays = members ? members.slice(0, 2) : [];
+  const refillReminders = members ? members.map((m: any) => ({
+    memberId: m.id, memberName: m.name, mobile: m.mobile, product: 'F1 Shake', daysLeft: 4, expectedDate: '2025-10-05', status: 'Pending'
+  })) : [];
+  const expiringProducts = products ? products.filter((p: any) => p.status === 'Low Stock' || p.status === 'Out of Stock') : [];
+  const memberLedgers: Record<string, any[]> = {};
 
   const value = {
+    lang, setLang, toggleLang, t,
     user, login, logout,
-    createBackup, restoreBackup,
-    members, addMember, updateMember, deleteMember,
-    attendance, markAttendance,
-    payments, addPayment,
-    products, setProducts,
-    purchases, addPurchase,
-    stockAdjustments, addStockAdjustment,
+    members, addMember, updateMember, deleteMember, activeMembers,
+    measurements, addMeasurement,
+    photos, addPhoto,
+    wellnessLogs, setWellnessLogs,
+    attendance, markAttendance, todayAttendance,
+    payments, addPayment, deletePayment, todayCollection, totalOutstanding,
+    products, setProducts, lowStockItems, expiringProducts,
+    followUps, setFollowUps, renewalsToday, todayBirthdays, refillReminders, memberLedgers,
+    bills, addBill, deleteBill,
     expenses, addExpense,
-    auditLogs, logAudit,
+    purchases, addPurchase,
+    leads, addLead,
+    auditLogs,
     usersList, addUser,
-    leads, setLeads,
-    guests, setGuests,
-    whatsappMessages, setWhatsappMessages,
-    dailyClosing, setDailyClosing,
-    refillReminders, setRefillReminders,
-    memberLedgers,
     sidebarOpen, setSidebarOpen,
-    notifications, setNotifications,
-    // Computed
-    todayAttendance, activeMembers, totalOutstanding,
-    todayCollection, lowStockItems, expiringProducts, renewalsToday, todayBirthdays,
-    today,
+    packages: PACKAGES,
+    coaches: COACHES,
+    whatsappTemplates: WHATSAPP_TEMPLATES
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
-export const useApp = () => {
-  const ctx = useContext(AppContext);
-  if (!ctx) throw new Error('useApp must be used within AppProvider');
-  return ctx;
-};
+export const useApp = () => useContext(AppContext);

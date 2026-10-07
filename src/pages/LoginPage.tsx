@@ -89,7 +89,17 @@ export default function LoginPage() {
       // Small artificial delay for UX polish
       await new Promise(r => setTimeout(r, 600));
       login({ username: username.trim(), role, name: username.trim() });
-      navigate('/dashboard');
+      
+      const roleUpper = role.toUpperCase();
+      if (roleUpper === 'COACH') {
+        navigate('/coach-dashboard');
+      } else if (roleUpper === 'RECEPTION' || roleUpper === 'STAFF') {
+        navigate('/attendance');
+      } else if (roleUpper === 'ACCOUNTS' || roleUpper === 'MEMBER') {
+        navigate('/photo-management');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err) {
       setError('Login failed. Please try again.');
     } finally {

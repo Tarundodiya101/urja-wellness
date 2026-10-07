@@ -105,66 +105,69 @@ const TODAY_CONSUMPTION = [
 
 export default function Dashboard() {
   const {
-    members, activeMembers, todayAttendance, totalOutstanding,
-    todayCollection, lowStockItems, renewalsToday, todayBirthdays,
-  } = useApp();
+    members = [], activeMembers = [], todayAttendance = [], totalOutstanding = 0,
+    todayCollection = 0, lowStockItems = [], renewalsToday = [], todayBirthdays = [],
+    t,
+  } = useApp() || {};
 
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('revenue');
 
-  const absentToday = activeMembers.length - todayAttendance.filter(a => a.status === 'Present').length;
-  const todayShakes = todayAttendance.reduce((sum, a) => sum + (a.shakeCount || 0), 0);
+  const absentToday = (activeMembers || []).length - (todayAttendance || []).filter((a: any) => a.status === 'Present').length;
+  const todayShakes = (todayAttendance || []).reduce((sum: number, a: any) => sum + (a.shakeCount || 0), 0);
+
+  const _t = (guj: string, eng: string) => (t ? t(guj, eng) : eng);
 
   const statCards = [
     {
-      label: 'Total Active Members',
-      value: activeMembers.length,
-      sub: `of ${members.length} total`,
+      label: _t('કુલ સક્રિય સભ્યો', 'Total Active Members'),
+      value: (activeMembers || []).length,
+      sub: `${_t('કુલ', 'of')} ${(members || []).length} ${_t('સભ્યો', 'total')}`,
       icon: FiUsers,
-      gradient: 'bg-gradient-to-br from-primary-500 to-primary-700',
-      textColor: 'text-primary-100',
+      gradient: 'bg-gradient-to-br from-emerald-500 to-emerald-700',
+      textColor: 'text-emerald-100',
       iconBg: 'bg-white/20',
     },
     {
-      label: 'Present Today',
-      value: todayAttendance.filter(a => a.status === 'Present').length,
-      sub: 'checked in',
+      label: _t('આજની હાજરી', 'Present Today'),
+      value: (todayAttendance || []).filter((a: any) => a.status === 'Present').length,
+      sub: _t('ચેક-ઈન', 'checked in'),
       icon: FiCheckCircle,
       gradient: 'bg-gradient-to-br from-blue-500 to-blue-700',
       textColor: 'text-blue-100',
       iconBg: 'bg-white/20',
     },
     {
-      label: 'Absent Today',
+      label: _t('ગેરહાજર આજે', 'Absent Today'),
       value: Math.max(0, absentToday),
-      sub: 'active members',
+      sub: _t('સક્રિય સભ્યો', 'active members'),
       icon: FiXCircle,
       gradient: 'bg-gradient-to-br from-orange-400 to-orange-600',
       textColor: 'text-orange-100',
       iconBg: 'bg-white/20',
     },
     {
-      label: "Today's Shakes Served",
+      label: _t('આજના શેક સર્વ', "Today's Shakes Served"),
       value: todayShakes,
-      sub: 'scoops consumed',
+      sub: _t('સ્કૂપ પીરસવામાં આવ્યા', 'scoops consumed'),
       icon: FiCoffee,
       gradient: 'bg-gradient-to-br from-purple-500 to-purple-700',
       textColor: 'text-purple-100',
       iconBg: 'bg-white/20',
     },
     {
-      label: "Today's Collection ₹",
+      label: _t('આજનું કલેક્શન ₹', "Today's Collection ₹"),
       value: `₹${fmt(todayCollection)}`,
-      sub: 'all payment modes',
+      sub: _t('બધા ચુકવણી મોડ', 'all payment modes'),
       icon: FiDollarSign,
-      gradient: 'bg-gradient-to-br from-emerald-500 to-emerald-700',
+      gradient: 'bg-gradient-to-br from-emerald-600 to-teal-700',
       textColor: 'text-emerald-100',
       iconBg: 'bg-white/20',
     },
     {
-      label: 'Total Outstanding ₹',
+      label: _t('કુલ બાકી રકમ ₹', 'Total Outstanding ₹'),
       value: `₹${fmt(totalOutstanding)}`,
-      sub: `${members.filter(m => m.pending > 0).length} members`,
+      sub: `${members.filter((m: any) => m.pending > 0).length} ${_t('સભ્યો', 'members')}`,
       icon: FiAlertTriangle,
       gradient: 'bg-gradient-to-br from-red-500 to-red-700',
       textColor: 'text-red-100',
@@ -173,32 +176,32 @@ export default function Dashboard() {
   ];
 
   const quickActions = [
-    { label: 'Add Member', icon: FiUserPlus, color: 'bg-primary-600 hover:bg-primary-700', path: '/members' },
-    { label: 'Mark Attendance', icon: FiCheckCircle, color: 'bg-blue-600 hover:bg-blue-700', path: '/attendance' },
-    { label: 'New Bill', icon: FiFileText, color: 'bg-purple-600 hover:bg-purple-700', path: '/billing' },
-    { label: 'Add Stock', icon: FiPackage, color: 'bg-orange-500 hover:bg-orange-600', path: '/inventory' },
+    { label: _t('સભ્ય ઉમેરો', 'Add Member'), icon: FiUserPlus, color: 'bg-emerald-600 hover:bg-emerald-700', path: '/members' },
+    { label: _t('હાજરી લગાવો', 'Mark Attendance'), icon: FiCheckCircle, color: 'bg-blue-600 hover:bg-blue-700', path: '/attendance' },
+    { label: _t('બિલ બનાવો', 'New Bill'), icon: FiFileText, color: 'bg-purple-600 hover:bg-purple-700', path: '/payments-ledger' },
+    { label: _t('સ્ટોક ઉમેરો', 'Add Stock'), icon: FiPackage, color: 'bg-orange-500 hover:bg-orange-600', path: '/inventory-refill' },
   ];
 
   return (
-    <div className="p-6 space-y-6 min-h-screen bg-gray-50">
+    <div className="space-y-6">
 
       {/* ── Page Header ─────────────────────────────────────────────── */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-extrabold text-navy-800 tracking-tight">Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-0.5">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight">{_t('ડેશબોર્ડ', 'Dashboard')}</h1>
+          <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
             {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-4 py-2 shadow-sm">
-          <FiBell className="text-primary-500" />
-          <span className="text-sm font-medium text-gray-700">Live Overview</span>
+        <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-3 sm:px-4 py-2 shadow-sm">
+          <FiBell className="text-emerald-500" />
+          <span className="text-xs sm:text-sm font-medium text-gray-700">{_t('લાઈવ ઓવરવ્યૂ', 'Live Overview')}</span>
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse ml-1" />
         </div>
       </div>
 
       {/* ── Stat Cards ──────────────────────────────────────────────── */}
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
         {statCards.map((card) => (
           <StatCard key={card.label} {...card} />
         ))}
