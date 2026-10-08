@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiCheck, FiEye, FiEyeOff, FiUser, FiLock, FiChevronDown } from 'react-icons/fi';
@@ -189,7 +190,7 @@ export default function LoginPage() {
 
           {/* Heading */}
           <div className="mb-8">
-            <h2 className="text-3xl font-extrabold text-slate-800">Welcome Back! 👋</h2>
+            <h2 className="text-3xl font-extrabold text-slate-800">Welcome Back! </h2>
             <p className="text-slate-500 text-sm mt-1.5">Sign in to your management portal</p>
           </div>
 
@@ -208,7 +209,7 @@ export default function LoginPage() {
                 Login As
               </label>
               <div className="relative">
-                <select
+                <Select
                   value={role}
                   onChange={e => setRole(e.target.value)}
                   className="w-full appearance-none bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-700 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all cursor-pointer"
@@ -216,7 +217,7 @@ export default function LoginPage() {
                   {ROLES.map(r => (
                     <option key={r} value={r}>{r}</option>
                   ))}
-                </select>
+                </Select>
                 <FiChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
               </div>
             </div>
@@ -276,14 +277,14 @@ export default function LoginPage() {
               <label htmlFor="centerName" className="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wide">
                 Center Name
               </label>
-              <select
+              <Select
                 id="centerName"
                 className="w-full appearance-none bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-700 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all cursor-pointer"
               >
                 <option value="Surat Main">URJA Wellness Club — Main Branch (Surat)</option>
                 <option value="City Light">URJA Wellness Club — City Light Branch</option>
                 <option value="Varachha">URJA Wellness Club — Varachha Branch</option>
-              </select>
+              </Select>
             </div>
 
             {/* Remember me & Forgot Password */}
@@ -332,7 +333,7 @@ export default function LoginPage() {
           {/* Demo hint */}
           <div className="mt-6 px-4 py-3 bg-blue-50 border border-blue-100 rounded-xl text-center">
             <p className="text-xs text-blue-600 font-medium">
-              💡 Demo Mode — Use any username &amp; password to login
+              Demo Mode — Use any username &amp; password to login
             </p>
           </div>
 

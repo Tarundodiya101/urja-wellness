@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiUser, FiCheckCircle, FiCalendar, FiCreditCard, FiPackage, FiTrendingUp, FiMaximize, FiPhone, FiShare2, FiCoffee } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -28,7 +29,7 @@ export default function MemberApp() {
           </div>
           
           {/* Member Switcher Dropdown for Demo */}
-          <select
+          <Select
             className="bg-white/10 border border-white/20 rounded-lg px-2 py-1 text-xs text-white focus:outline-none"
             value={selectedMemberId}
             onChange={e => setSelectedMemberId(e.target.value)}
@@ -36,7 +37,7 @@ export default function MemberApp() {
             {members.map(m => (
               <option key={m.id} value={m.id} className="text-gray-900">{m.name} ({m.id})</option>
             ))}
-          </select>
+          </Select>
         </div>
 
         {/* Member Profile Card */}
@@ -130,7 +131,7 @@ export default function MemberApp() {
                 <div className={`font-black text-base mt-0.5 ${member.pending > 0 ? 'text-rose-600' : 'text-emerald-700'}`}>
                   ₹{(member.pending || 0).toLocaleString()}
                 </div>
-                <div className="text-[10px] text-gray-500 mt-1">{member.pending > 0 ? 'Pay at Reception' : 'All Clear ✓'}</div>
+                <div className="text-[10px] text-gray-500 mt-1">{member.pending > 0 ? 'Pay at Reception' : 'All Clear '}</div>
               </div>
             </div>
 
@@ -138,7 +139,7 @@ export default function MemberApp() {
             <div className="p-4 bg-white rounded-2xl border border-gray-200 space-y-2">
               <div className="text-xs font-bold text-navy-900 flex items-center justify-between">
                 <span className="flex items-center gap-1.5"><FiCoffee className="text-emerald-600" /> Today Shake & Drink Log</span>
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">SERVED ✓</span>
+                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">SERVED </span>
               </div>
               <div className="text-xs text-gray-600">Formula 1 Shake (Vanilla) + Protein Scoop & Aloe Drink</div>
               <div className="text-[10px] text-gray-400">Checked in at 07:42 AM Today</div>
@@ -147,7 +148,7 @@ export default function MemberApp() {
             {/* Goal Card */}
             <div className="p-4 bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl space-y-2">
               <div className="text-xs font-bold flex items-center justify-between">
-                <span>🎯 Your Weight Loss Goal</span>
+                <span>Your Weight Loss Goal</span>
                 <span className="bg-white/20 px-2 py-0.5 rounded-full text-[10px]">4 kg Lost</span>
               </div>
               <div className="flex justify-between items-baseline text-xs">
@@ -164,7 +165,7 @@ export default function MemberApp() {
             <div className="p-3 bg-white rounded-2xl border flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-navy-100 text-navy-900 font-bold flex items-center justify-center">
-                  📞
+                  
                 </div>
                 <div>
                   <div className="font-bold text-navy-900">Your Wellness Coach</div>
@@ -220,7 +221,7 @@ export default function MemberApp() {
           <div className="space-y-3 text-xs">
             <div className="font-bold text-navy-900 text-sm">Product Usage & Refill Tracker</div>
             <div className="p-4 bg-orange-50 border border-orange-200 rounded-2xl text-orange-950 space-y-2">
-              <div className="font-bold text-sm">🔔 Nutrition Shake Refill Approaching</div>
+              <div className="font-bold text-sm">Nutrition Shake Refill Approaching</div>
               <div>Expected Finish Date: <span className="font-bold">05/10/2025</span></div>
               <div className="text-[11px] text-orange-800">Please order refill at URJA Wellness Club counter or via Coach.</div>
             </div>
@@ -249,7 +250,7 @@ export default function MemberApp() {
               <div className="flex justify-between font-bold text-emerald-700">
                 <span>01/10/2025</span>
                 <span>74.0 kg</span>
-                <span>-4.0 kg Total! 🎉</span>
+                <span>-4.0 kg Total! </span>
               </div>
             </div>
           </div>

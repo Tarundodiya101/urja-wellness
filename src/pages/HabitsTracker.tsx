@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCheckCircle, FiSave, FiAward } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -23,9 +24,9 @@ export default function HabitsTracker() {
 
   const getScoreBadge = (score: number) => {
     if (score === 8) return { label: '8/8 Excellent ⭐', color: 'bg-emerald-100 text-emerald-800 border-emerald-300' };
-    if (score >= 6) return { label: `${score}/8 Good 👍`, color: 'bg-blue-100 text-blue-800 border-blue-300' };
-    if (score >= 4) return { label: `${score}/8 Focus Needed ⚠️`, color: 'bg-amber-100 text-amber-800 border-amber-300' };
-    return { label: `${score}/8 Follow-up Required 🔴`, color: 'bg-rose-100 text-rose-800 border-rose-300' };
+    if (score >= 6) return { label: `${score}/8 Good `, color: 'bg-blue-100 text-blue-800 border-blue-300' };
+    if (score >= 4) return { label: `${score}/8 Focus Needed ️`, color: 'bg-amber-100 text-amber-800 border-amber-300' };
+    return { label: `${score}/8 Follow-up Required `, color: 'bg-rose-100 text-rose-800 border-rose-300' };
   };
 
   const badge = getScoreBadge(activeCount);
@@ -47,7 +48,7 @@ export default function HabitsTracker() {
           <h1 className="page-title">Daily Habit Tracker & Score</h1>
           <p className="text-sm text-gray-500">Master Section 13: 8-Point Daily Habit Evaluation (8/8 Excellent • 6-7 Good • 4-5 Focus Needed • Below 4 Follow-up)</p>
         </div>
-        <select
+        <Select
           className="input-field w-64 bg-white font-bold"
           value={selectedMemberId}
           onChange={e => setSelectedMemberId(e.target.value)}
@@ -55,7 +56,7 @@ export default function HabitsTracker() {
           {members.map((m: any) => (
             <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
           ))}
-        </select>
+        </Select>
       </div>
 
       <div className="card space-y-6 border-l-4 border-emerald-500">
@@ -74,12 +75,12 @@ export default function HabitsTracker() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             {[
               { key: 'nutrition', title: '1. Balanced Nutrition Meal', desc: 'Portion controlled meal + Shake' },
-              { key: 'water', title: '2. Hydration Target 💧', desc: '3.0L+ Water intake completed' },
-              { key: 'activity', title: '3. Physical Activity 🚶', desc: '45+ mins workout or walking' },
-              { key: 'sleep', title: '4. Restful Sleep 😴', desc: '7+ hours uninterrupted sleep' },
+              { key: 'water', title: '2. Hydration Target ', desc: '3.0L+ Water intake completed' },
+              { key: 'activity', title: '3. Physical Activity ', desc: '45+ mins workout or walking' },
+              { key: 'sleep', title: '4. Restful Sleep ', desc: '7+ hours uninterrupted sleep' },
               { key: 'fruitsVeg', title: '5. Fruits & Vegetables', desc: '2+ servings fresh produce' },
               { key: 'movement', title: '6. Daily Movement', desc: 'Regular active movement breaks' },
-              { key: 'stressMgmt', title: '7. Stress Management 🧠', desc: 'Breathing / Meditation practice' },
+              { key: 'stressMgmt', title: '7. Stress Management ', desc: 'Breathing / Meditation practice' },
               { key: 'centerSession', title: '8. Center Session Attended', desc: 'URJA club visit completed' },
             ].map(item => {
               const isChecked = checklist[item.key as keyof typeof checklist];
@@ -96,7 +97,7 @@ export default function HabitsTracker() {
                     <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
                       isChecked ? 'bg-emerald-600 text-white' : 'bg-gray-300 text-gray-600'
                     }`}>
-                      {isChecked ? '✓' : ''}
+                      {isChecked ? '' : ''}
                     </span>
                   </div>
                   <div className="text-[11px] text-gray-500 mt-1">{item.desc}</div>

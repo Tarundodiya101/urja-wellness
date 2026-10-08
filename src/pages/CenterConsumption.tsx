@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCheck, FiCoffee, FiPlus, FiSearch, FiSave } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -50,7 +51,7 @@ export default function CenterConsumption() {
           <p className="text-sm text-gray-500">Record member shake, tea, aloe, protein, fiber & deduct inventory automatically</p>
         </div>
         <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs">
-          Auto Inventory Connected 🔄
+          Auto Inventory Connected 
         </span>
       </div>
 
@@ -113,12 +114,12 @@ export default function CenterConsumption() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="label">Shake Flavor</label>
-                <select className="input-field" value={shakeFlavor} onChange={e => setShakeFlavor(e.target.value)}>
+                <Select className="input-field" value={shakeFlavor} onChange={e => setShakeFlavor(e.target.value)}>
                   <option value="Formula 1 Shake (Vanilla)">Formula 1 Shake (Vanilla)</option>
                   <option value="Formula 1 Shake (Chocolate)">Formula 1 Shake (Chocolate)</option>
                   <option value="Formula 1 Shake (Mango)">Formula 1 Shake (Mango)</option>
                   <option value="Dinoshake Chocolate (Kids)">Dinoshake Chocolate (Kids)</option>
-                </select>
+                </Select>
               </div>
 
               <div>
@@ -144,7 +145,7 @@ export default function CenterConsumption() {
                     tea ? 'bg-emerald-600 text-white shadow-md' : 'bg-gray-200 text-gray-600'
                   }`}
                 >
-                  {tea ? 'YES ✓' : 'NO ✗'}
+                  {tea ? 'YES ' : 'NO '}
                 </button>
               </div>
 
@@ -157,7 +158,7 @@ export default function CenterConsumption() {
                     aloe ? 'bg-emerald-600 text-white shadow-md' : 'bg-gray-200 text-gray-600'
                   }`}
                 >
-                  {aloe ? 'YES ✓' : 'NO ✗'}
+                  {aloe ? 'YES ' : 'NO '}
                 </button>
               </div>
 
@@ -179,7 +180,7 @@ export default function CenterConsumption() {
                     fiber ? 'bg-emerald-600 text-white shadow-md' : 'bg-gray-200 text-gray-600'
                   }`}
                 >
-                  {fiber ? 'YES ✓' : 'NO ✗'}
+                  {fiber ? 'YES ' : 'NO '}
                 </button>
               </div>
             </div>

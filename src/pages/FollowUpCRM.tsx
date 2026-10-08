@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import { useState, useMemo } from 'react';
 import {
   FiPlus, FiPhone, FiMessageCircle, FiCheckCircle, FiChevronRight,
@@ -112,17 +113,17 @@ function AddLeadModal({ onClose, onAdd }) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Source</label>
-              <select value={form.source} onChange={set('source')}
+              <Select value={form.source} onChange={set('source')}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
                 {SOURCES.map((s) => <option key={s}>{s}</option>)}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Assign Coach</label>
-              <select value={form.coach} onChange={set('coach')}
+              <Select value={form.coach} onChange={set('coach')}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
                 {COACHES.map((c) => <option key={c}>{c}</option>)}
-              </select>
+              </Select>
             </div>
           </div>
           <FormField label="Notes" htmlFor="lead-notes">
@@ -220,6 +221,7 @@ function LeadPipeline() {
   const [leads, setLeads] = useState(INITIAL_LEADS);
   const [showModal, setShowModal] = useState(false);
   const [search, setSearch] = useState('');
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [filterStage, setFilterStage] = useState('All');
 
   const addLead = (lead) => setLeads((prev) => [lead, ...prev]);
@@ -319,10 +321,10 @@ function LeadPipeline() {
                   </td>
                   <td className="px-4 py-3 text-gray-600 whitespace-nowrap text-xs">{lead.coach}</td>
                   <td className="px-4 py-3">
-                    <select value={lead.stage} onChange={(e) => updateStage(lead.id, e.target.value)}
+                    <Select value={lead.stage} onChange={(e) => updateStage(lead.id, e.target.value)}
                       className={`text-xs font-semibold border rounded-full px-2 py-1 focus:outline-none cursor-pointer ${STAGE_COLORS[lead.stage]}`}>
                       {PIPELINE_STAGES.map((s) => <option key={s} value={s}>{s}</option>)}
-                    </select>
+                    </Select>
                   </td>
                   <td className="px-4 py-3 text-gray-500 whitespace-nowrap text-xs">{lead.lastContact}</td>
                   <td className="px-4 py-3 text-gray-500 text-xs max-w-[160px] truncate">{lead.notes || '—'}</td>
@@ -352,7 +354,7 @@ function LeadPipeline() {
                         className="p-1.5 rounded-lg text-emerald-600 hover:bg-emerald-50 transition-colors">
                         <FiMessageCircle size={14}/>
                       </a>
-                      <button onClick={() => deleteLead(lead.id)} title="Delete"
+                      <button onClick={() => setConfirmDeleteId(lead.id)} title="Delete"
                         className="p-1.5 rounded-lg text-red-400 hover:bg-red-50 transition-colors">
                         <FiTrash2 size={14}/>
                       </button>
@@ -386,7 +388,7 @@ function AbsentMembers() {
 
   const markVisited = (id) => {
     setMembers((prev) => prev.filter((m) => m.id !== id));
-    showToast('✅ Member marked as visited today.');
+    showToast('Member marked as visited today.');
   };
 
   const urgentCount = members.filter((m) => m.days > 3).length;

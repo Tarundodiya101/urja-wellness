@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCamera, FiPlus, FiArrowRight, FiCheck, FiDownload } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -19,9 +20,9 @@ export default function PhotoManagement() {
     addPhoto(member.id, {
       date: new Date().toISOString().split('T')[0],
       stage,
-      front: `📸 ${stage} Front View`,
-      side: `📸 ${stage} Side View`,
-      back: `📸 ${stage} Back View`
+      front: `${stage} Front View`,
+      side: `${stage} Side View`,
+      back: `${stage} Back View`
     });
     setShowUploadModal(false);
     alert(`Photos uploaded successfully for ${member.name} (${stage})!`);
@@ -45,7 +46,7 @@ export default function PhotoManagement() {
         <div className="flex items-center gap-3">
           <FiCamera className="text-emerald-600 text-xl" />
           <span className="font-bold text-navy-900 text-sm">Select Member:</span>
-          <select
+          <Select
             className="input-field w-64 bg-white"
             value={selectedMemberId}
             onChange={e => setSelectedMemberId(e.target.value)}
@@ -53,7 +54,7 @@ export default function PhotoManagement() {
             {members.map((m: any) => (
               <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
             ))}
-          </select>
+          </Select>
         </div>
         <div className="text-xs text-emerald-700 font-bold bg-emerald-100 px-3 py-1 rounded-full">
           Total Photo Records: {memberPhotosList.length} Timeline Entries
@@ -64,7 +65,7 @@ export default function PhotoManagement() {
       <div className="card space-y-4 border-2 border-emerald-500 shadow-xl">
         <div className="flex items-center justify-between">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiCamera className="text-emerald-600" /> BEFORE 📸 → CURRENT 📸 Transformation Comparison
+            <FiCamera className="text-emerald-600" /> BEFORE → CURRENT Transformation Comparison
           </h3>
           <button
             onClick={() => alert(`Generating Before/Current Transformation Comparison PDF for ${member.name}...`)}
@@ -138,13 +139,13 @@ export default function PhotoManagement() {
             <form onSubmit={handleUploadPhoto} className="space-y-3 text-xs">
               <div>
                 <label className="label text-[10px]">Select Timeline Milestone</label>
-                <select className="input-field" value={stage} onChange={e => setStage(e.target.value)}>
+                <Select className="input-field" value={stage} onChange={e => setStage(e.target.value)}>
                   <option value="Day 7 Progress">Day 7 Progress Review</option>
                   <option value="Day 14 Progress">Day 14 Progress Review</option>
                   <option value="Day 30 Progress">Day 30 Progress Review</option>
                   <option value="Day 60 Progress">Day 60 Transformation</option>
                   <option value="Day 90 Transformation">Day 90 Final Transformation</option>
-                </select>
+                </Select>
               </div>
 
               <div className="p-3 bg-gray-50 border border-dashed border-gray-300 rounded-xl space-y-2 text-center">

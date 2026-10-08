@@ -34,12 +34,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ 
 ));
 Textarea.displayName = 'Textarea';
 
-type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement>;
-
-export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(({ className, ...props }, ref) => (
-  <select ref={ref} className={joinClasses('input-field', className)} {...props} />
-));
-Select.displayName = 'Select';
+import { CustomSelect } from './CustomSelect';
+export const Select = CustomSelect;
 
 export function Label({ className, ...props }: React.LabelHTMLAttributes<HTMLLabelElement>) {
   return <label className={joinClasses('label', className)} {...props} />;

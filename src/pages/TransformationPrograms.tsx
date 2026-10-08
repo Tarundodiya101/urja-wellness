@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiAward, FiCheck, FiCalendar, FiArrowRight } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -16,7 +17,7 @@ export default function TransformationPrograms() {
           <h1 className="page-title">30-Day & 90-Day Transformation Programs</h1>
           <p className="text-sm text-gray-500">Master Sections 23 & 24: Structured 30-Day Foundation & 90-Day Lifestyle Transformation Roadmaps</p>
         </div>
-        <select
+        <Select
           className="input-field w-64 bg-white font-bold"
           value={selectedMemberId}
           onChange={e => setSelectedMemberId(e.target.value)}
@@ -24,7 +25,7 @@ export default function TransformationPrograms() {
           {members.map((m: any) => (
             <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
           ))}
-        </select>
+        </Select>
       </div>
 
       {/* Specification Section 23: 30-DAY PROGRAM */}
@@ -86,7 +87,7 @@ export default function TransformationPrograms() {
           <div className="p-4 bg-navy-50 rounded-2xl border border-navy-200 space-y-2">
             <div className="font-bold text-navy-900 text-base">MONTH 3: BUILD LIFESTYLE</div>
             <div className="text-navy-700">Long-term maintenance habits, optimal BMI, & complete transformation photo review.</div>
-            <div className="pt-2 font-mono font-bold text-emerald-700">Milestone: Target Weight Achieved 🎉</div>
+            <div className="pt-2 font-mono font-bold text-emerald-700">Milestone: Target Weight Achieved </div>
           </div>
         </div>
 

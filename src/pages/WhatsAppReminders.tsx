@@ -12,19 +12,19 @@ export default function WhatsAppReminders() {
   const templates = {
     GUJ: {
       PAYMENT: 'નમસ્તે {name}, URJA Wellness Club માં આપનું બાકી ચૂકવણું ₹{amount} બાકી છે. કૃપા કરીને વહેલી તકે ચુકવણી કરશો. આભાર!',
-      RENEWAL: 'નમસ્તે {name}, આપનું પ્લસ મેમ્બરશિપ પેકેજ {date} ના રોજ સમાપ્ત થાય છે. સાતત્ય જાળવવા માટે આજે જ રીન્યુ કરો! 🌿',
-      ABSENT: 'નમસ્તે {name}, URJA Wellness Club માં છેલ્લા ૨ દિવસથી તમારી હાજરી જોવા મળી નથી. તમારું સ્વાસ્થ્ય અમારું લક્ષ્ય છે. આજે જ આવો! 💪',
-      REFILL: 'નમસ્તે {name}, તમારી ન્યુટ્રિશન પ્રોડક્ટનું રીફિલ {date} એ પૂરું થાય છે. સ્ટોક સમાપ્ત થાય તે પહેલાં રીફિલ ઓર્ડર કરો! 🥤',
-      PROGRESS: 'નમસ્તે {name}, આ અઠવાડિયે તમારું બોડી મેઝરમેન્ટ અને પ્રોગ્રેસ રિવ્યુ બાકી છે. તમારા કોચ સાથે રિવ્યુ સ્લોટ બુક કરો! 📸',
-      BIRTHDAY: '💐 URJA Wellness Club તરફથી તમને જન્મદિવસની હાર્દિક શુભેચ્છાઓ! તમારું સ્વાસ્થ્ય અને જીવન હંમેશા ઉર્જાવાન રહે! 🎂',
+      RENEWAL: 'નમસ્તે {name}, આપનું પ્લસ મેમ્બરશિપ પેકેજ {date} ના રોજ સમાપ્ત થાય છે. સાતત્ય જાળવવા માટે આજે જ રીન્યુ કરો! ',
+      ABSENT: 'નમસ્તે {name}, URJA Wellness Club માં છેલ્લા ૨ દિવસથી તમારી હાજરી જોવા મળી નથી. તમારું સ્વાસ્થ્ય અમારું લક્ષ્ય છે. આજે જ આવો! ',
+      REFILL: 'નમસ્તે {name}, તમારી ન્યુટ્રિશન પ્રોડક્ટનું રીફિલ {date} એ પૂરું થાય છે. સ્ટોક સમાપ્ત થાય તે પહેલાં રીફિલ ઓર્ડર કરો! ',
+      PROGRESS: 'નમસ્તે {name}, આ અઠવાડિયે તમારું બોડી મેઝરમેન્ટ અને પ્રોગ્રેસ રિવ્યુ બાકી છે. તમારા કોચ સાથે રિવ્યુ સ્લોટ બુક કરો! ',
+      BIRTHDAY: 'URJA Wellness Club તરફથી તમને જન્મદિવસની હાર્દિક શુભેચ્છાઓ! તમારું સ્વાસ્થ્ય અને જીવન હંમેશા ઉર્જાવાન રહે! ',
     },
     ENG: {
       PAYMENT: 'Hello {name}, your pending payment of ₹{amount} is due at URJA Wellness Club. Please complete the payment at your earliest convenience. Thank you!',
-      RENEWAL: 'Hello {name}, your membership package is expiring on {date}. Renew today to continue your transformation journey without interruption! 🌿',
-      ABSENT: 'Hello {name}, we missed you at URJA Wellness Club for the last 2 days. Your health is our priority. See you today! 💪',
-      REFILL: 'Hello {name}, your nutrition stock refill is due around {date}. Please order your refill before your current supply ends! 🥤',
-      PROGRESS: 'Hello {name}, your weekly body measurement and progress review is due. Please schedule a slot with your coach today! 📸',
-      BIRTHDAY: '💐 Happy Birthday {name} from team URJA Wellness Club! Wishing you a healthy, energetic, and happy year ahead! 🎂',
+      RENEWAL: 'Hello {name}, your membership package is expiring on {date}. Renew today to continue your transformation journey without interruption! ',
+      ABSENT: 'Hello {name}, we missed you at URJA Wellness Club for the last 2 days. Your health is our priority. See you today! ',
+      REFILL: 'Hello {name}, your nutrition stock refill is due around {date}. Please order your refill before your current supply ends! ',
+      PROGRESS: 'Hello {name}, your weekly body measurement and progress review is due. Please schedule a slot with your coach today! ',
+      BIRTHDAY: 'Happy Birthday {name} from team URJA Wellness Club! Wishing you a healthy, energetic, and happy year ahead! ',
     }
   };
 
@@ -101,7 +101,7 @@ export default function WhatsAppReminders() {
       mobile: '9909011223',
       type: 'BIRTHDAY',
       badgeColor: 'bg-pink-100 text-pink-700 border-pink-200',
-      title: 'Birthday Today 🎂',
+      title: 'Birthday Today ',
       detail: 'Send Special Wellness Wish',
       date: 'Today',
       amount: 0,
@@ -134,7 +134,7 @@ export default function WhatsAppReminders() {
           <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-1">
             <FiMessageSquare className="animate-pulse" /> Section 17 — Master Blueprint
           </div>
-          <h1 className="text-2xl font-black tracking-tight">📱 Automatic WhatsApp Reminders</h1>
+          <h1 className="text-2xl font-black tracking-tight">Automatic WhatsApp Reminders</h1>
           <p className="text-gray-300 text-sm mt-1">
             Send 1-Click WhatsApp alerts in Gujarati & English for Payments, Renewals, Attendance, Refill & Birthdays.
           </p>
@@ -201,7 +201,7 @@ export default function WhatsAppReminders() {
                     {item.type}
                   </span>
                   <h3 className="text-base font-bold text-gray-900 mt-1">{item.memberName}</h3>
-                  <p className="text-xs text-gray-500 font-mono">📱 +91 {item.mobile}</p>
+                  <p className="text-xs text-gray-500 font-mono">+91 {item.mobile}</p>
                 </div>
                 <div className="text-right">
                   <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg">

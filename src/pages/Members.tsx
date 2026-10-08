@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext';
 import { PACKAGES, COACHES, PROGRAM_TYPES, BATCH_TIMES } from '../data/mockData';
 import Badge from '../components/shared/Badge';
 import Modal from '../components/shared/Modal';
+import ConfirmDialog from '../components/shared/ConfirmDialog';
 import { Button, Input, Select } from '../components/ui/fields';
 
 const EMPTY_MEMBER = {
@@ -37,6 +38,7 @@ export default function Members() {
   const [showViewModal, setShowViewModal] = useState(false);
   const [editingMember, setEditingMember] = useState(null);
   const [viewMember, setViewMember] = useState(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [activeTab, setActiveTab] = useState(1);
   const [form, setForm] = useState(EMPTY_MEMBER);
   const [page, setPage] = useState(1);
@@ -80,7 +82,14 @@ export default function Members() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm('Delete this member?')) deleteMember(id);
+    setConfirmDeleteId(id);
+  };
+
+  const confirmDelete = () => {
+    if (confirmDeleteId) {
+      deleteMember(confirmDeleteId);
+      setConfirmDeleteId(null);
+    }
   };
 
   const memberPayments = (id) => payments.filter(p => p.memberId === id);
@@ -118,17 +127,17 @@ export default function Members() {
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input className="input-field pl-9" placeholder="Search by name, ID, mobile, coach..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} />
           </div>
-          <select className="input-field w-40" value={filterStatus} onChange={e => setFilterStatus(e.target.value)}>
+          <Select className="input-field w-40" value={filterStatus} onChange={e => setFilterStatus(e.target.value)}>
             <option value="All">All Status</option>
             <option value="Active">Active</option>
             <option value="Expired">Expired</option>
             <option value="Trial">Trial</option>
             <option value="Hold">Hold</option>
-          </select>
-          <select className="input-field w-44" value={filterCoach} onChange={e => setFilterCoach(e.target.value)}>
+          </Select>
+          <Select className="input-field w-44" value={filterCoach} onChange={e => setFilterCoach(e.target.value)}>
             <option value="All">All Coaches</option>
             {COACHES.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
-          </select>
+          </Select>
         </div>
       </div>
 
@@ -218,27 +227,27 @@ export default function Members() {
             </div>
             <div>
               <label className="label">Program Type</label>
-              <select className="input-field" value={form.programType} onChange={e => setForm({ ...form, programType: e.target.value })}>
+              <Select className="input-field" value={form.programType} onChange={e => setForm({ ...form, programType: e.target.value })}>
                 {PROGRAM_TYPES.map(p => <option key={p} value={p}>{p}</option>)}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="label">Batch Time</label>
-              <select className="input-field" value={form.batchTime} onChange={e => setForm({ ...form, batchTime: e.target.value })}>
+              <Select className="input-field" value={form.batchTime} onChange={e => setForm({ ...form, batchTime: e.target.value })}>
                 {BATCH_TIMES.map(b => <option key={b} value={b}>{b}</option>)}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="label">Package</label>
-              <select className="input-field" value={form.packageId} onChange={e => handlePackageChange(e.target.value)}>
+              <Select className="input-field" value={form.packageId} onChange={e => handlePackageChange(e.target.value)}>
                 {PACKAGES.map(p => <option key={p.id} value={p.id}>{p.name} (₹{p.amount})</option>)}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="label">Coach Assignment</label>
-              <select className="input-field" value={form.coach} onChange={e => setForm({ ...form, coach: e.target.value })}>
+              <Select className="input-field" value={form.coach} onChange={e => setForm({ ...form, coach: e.target.value })}>
                 {COACHES.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="label">Referral Person</label>
@@ -398,7 +407,7 @@ export default function Members() {
                 <div className="space-y-2">
                   <div className="font-bold text-navy-900">Refill Reminder Status</div>
                   <div className="p-3 bg-orange-50 border border-orange-200 rounded-xl text-orange-900">
-                    🔔 Formula 1 Shake Refill due in 4 days (Expected Finish: 05/10/2025).
+                    Formula 1 Shake Refill due in 4 days (Expected Finish: 05/10/2025).
                   </div>
                 </div>
               )}
@@ -418,7 +427,7 @@ export default function Members() {
                   <div className="p-3 bg-emerald-50 rounded-xl text-emerald-900 font-bold flex justify-between">
                     <div>Current Weight: {viewMember.weight} kg</div>
                     <div>Target Weight: {viewMember.targetWeight} kg</div>
-                    <div className="text-emerald-700">Progress: 4 kg Lost! 🎉</div>
+                    <div className="text-emerald-700">Progress: 4 kg Lost! </div>
                   </div>
                 </div>
               )}
@@ -426,6 +435,15 @@ export default function Members() {
           </div>
         </Modal>
       )}
+
+      <ConfirmDialog
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={confirmDelete}
+        title="Delete Member"
+        message="Are you sure you want to delete this member? This action cannot be undone."
+        confirmText="Delete Member"
+      />
     </div>
   );
 }

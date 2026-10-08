@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiUsers, FiCheckSquare, FiBell, FiPhone, FiMessageSquare, FiTrendingUp, FiSave } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -36,7 +37,7 @@ export default function CoachApp() {
             <h2 className="text-lg font-black">COACH MOBILE PORTAL</h2>
           </div>
           
-          <select
+          <Select
             className="bg-white/10 border border-white/20 rounded-lg px-2 py-1 text-xs text-white focus:outline-none"
             value={selectedCoach}
             onChange={e => setSelectedCoach(e.target.value)}
@@ -44,7 +45,7 @@ export default function CoachApp() {
             <option value="Priya Sharma" className="text-gray-900">Priya Sharma</option>
             <option value="Rahul Patel" className="text-gray-900">Rahul Patel</option>
             <option value="Anita Mehta" className="text-gray-900">Anita Mehta</option>
-          </select>
+          </Select>
         </div>
 
         <div className="p-3 bg-white/10 rounded-xl border border-white/20 flex justify-between text-xs">
@@ -126,7 +127,7 @@ export default function CoachApp() {
                 </div>
                 <div className="text-right">
                   <div className="text-gray-500">{a.time || '07:42 AM'}</div>
-                  <span className="text-[10px] font-bold text-emerald-700">PRESENT ✓</span>
+                  <span className="text-[10px] font-bold text-emerald-700">PRESENT </span>
                 </div>
               </div>
             ))}

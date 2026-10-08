@@ -30,7 +30,7 @@ export default function FollowUpSystem() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="page-title">Follow-up System</h1>
-          <p className="text-sm text-gray-500">Master Section 18: Auto-flagged 🔴 Follow-up Required for Absent Members, Payments, Expiries & Progress Reviews</p>
+          <p className="text-sm text-gray-500">Master Section 18: Auto-flagged Follow-up Required for Absent Members, Payments, Expiries & Progress Reviews</p>
         </div>
         <div className="flex gap-2">
           {['ALL', 'Absent', 'Payment', 'Expiry', 'Measurement', 'Refill'].map(r => (
@@ -51,7 +51,7 @@ export default function FollowUpSystem() {
       <div className="card p-0 overflow-hidden border-l-4 border-rose-500">
         <div className="p-4 bg-rose-50 border-b border-rose-100 flex items-center justify-between">
           <div className="font-bold text-rose-900 text-sm flex items-center gap-2">
-            <FiPhoneCall className="text-rose-600" /> 🔴 Follow-up Required Tasks ({followUps.length})
+            <FiPhoneCall className="text-rose-600" /> Follow-up Required Tasks ({followUps.length})
           </div>
           <span className="text-xs bg-rose-200 text-rose-900 font-bold px-3 py-0.5 rounded-full">
             Action Required Today

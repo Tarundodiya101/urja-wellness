@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { CustomSelect } from '../ui/CustomSelect';
 import {
   FiMenu, FiBell, FiSearch, FiUser, FiLogOut,
-  FiChevronDown, FiGlobe, FiX, FiCheck, FiPackage, FiFileText
+  FiChevronDown, FiGlobe, FiX, FiCheck, FiPackage, FiFileText,
+  FiCreditCard, FiAlertTriangle, FiClock, FiTarget, FiAlertCircle
 } from 'react-icons/fi';
 import { useApp } from '../../context/AppContext';
 import { format } from 'date-fns';
@@ -108,12 +110,12 @@ export default function Header() {
 
   // Notification items calculation
   const notificationsList = [
-    { title: t ? t('૧૨ રીફિલ ડ્યૂ આજે', '12 Refill Due Today') : '12 Refill Due Today', sub: 'Amit Sureliya & 11 others expected finish', icon: '🔔', color: 'orange' },
-    { title: t ? t('૬ પેમેન્ટ બાકી ચુકવણી', '6 Payment Dues Pending') : '6 Payment Dues Pending', sub: 'Total ₹12,850 pending collection', icon: '💳', color: 'red' },
-    { title: t ? t('૩ ઓછો સ્ટોક પ્રોડક્ટ્સ', '3 Low Stock Items') : '3 Low Stock Items', sub: `${(lowStockItems || []).map((i: any) => i.name).join(', ') || 'Formula 1 Shake, Protein'}`, icon: '⚠️', color: 'yellow' },
-    { title: `${(expiringProducts || []).length} ${t ? t('પ્રોડક્ટ્સ એક્સપાયરી નજીક', 'Products Expiring Soon') : 'Products Expiring Soon'}`, sub: 'Check Expiry Management tab', icon: '⏳', color: 'purple' },
-    { title: t ? t('૮ ફોલો-અપ શેડ્યૂલ', '8 Follow-ups Scheduled Today') : '8 Follow-ups Scheduled Today', sub: 'Check Lead & Follow-up CRM', icon: '🎯', color: 'blue' },
-    { title: t ? t('૫ સભ્યો ગેરહાજર (૩+ દિવસ)', '5 Absent Members (3+ Days)') : '5 Absent Members (3+ Days)', sub: 'Priya Desai & 4 others', icon: '🚨', color: 'rose' },
+    { title: t ? t('૧૨ રીફિલ ડ્યૂ આજે', '12 Refill Due Today') : '12 Refill Due Today', sub: 'Amit Sureliya & 11 others expected finish', icon: <FiBell className="text-orange-500" size={20} />, color: 'orange' },
+    { title: t ? t('૬ પેમેન્ટ બાકી ચુકવણી', '6 Payment Dues Pending') : '6 Payment Dues Pending', sub: 'Total ₹12,850 pending collection', icon: <FiCreditCard className="text-red-500" size={20} />, color: 'red' },
+    { title: t ? t('૩ ઓછો સ્ટોક પ્રોડક્ટ્સ', '3 Low Stock Items') : '3 Low Stock Items', sub: `${(lowStockItems || []).map((i: any) => i.name).join(', ') || 'Formula 1 Shake, Protein'}`, icon: <FiAlertTriangle className="text-yellow-500" size={20} />, color: 'yellow' },
+    { title: `${(expiringProducts || []).length} ${t ? t('પ્રોડક્ટ્સ એક્સપાયરી નજીક', 'Products Expiring Soon') : 'Products Expiring Soon'}`, sub: 'Check Expiry Management tab', icon: <FiClock className="text-purple-500" size={20} />, color: 'purple' },
+    { title: t ? t('૮ ફોલો-અપ શેડ્યૂલ', '8 Follow-ups Scheduled Today') : '8 Follow-ups Scheduled Today', sub: 'Check Lead & Follow-up CRM', icon: <FiTarget className="text-blue-500" size={20} />, color: 'blue' },
+    { title: t ? t('૫ સભ્યો ગેરહાજર (૩+ દિવસ)', '5 Absent Members (3+ Days)') : '5 Absent Members (3+ Days)', sub: 'Priya Desai & 4 others', icon: <FiAlertCircle className="text-rose-500" size={20} />, color: 'rose' },
   ];
 
   return (
@@ -188,17 +190,16 @@ export default function Header() {
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
         {/* Global Language Selector Dropdown */}
         <div className="relative flex items-center shrink-0">
-          <FiGlobe className="absolute left-2.5 text-emerald-600 pointer-events-none z-10" size={15} />
-          <select
+          <CustomSelect
             value={lang}
             onChange={(e) => setLang && setLang(e.target.value as 'GUJ' | 'ENG')}
-            className="bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 text-xs font-bold rounded-xl pl-8 pr-7 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer transition-all shadow-sm appearance-none"
+            className="bg-emerald-50 hover:bg-emerald-100 border-emerald-200 text-emerald-900 font-bold rounded-xl"
+            icon={<FiGlobe className="text-emerald-600" size={15} />}
             title="Select Application Language"
           >
             <option value="GUJ">ગુજરાતી (Gujarati)</option>
             <option value="ENG">English (US)</option>
-          </select>
-          <FiChevronDown className="absolute right-2 text-emerald-600 pointer-events-none z-10" size={13} />
+          </CustomSelect>
         </div>
 
         {/* Notification Bell */}
@@ -217,7 +218,7 @@ export default function Header() {
           {showNotifs && (
             <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 py-3 z-50 animate-fade-in">
               <div className="px-4 pb-2 border-b border-gray-100 flex items-center justify-between">
-                <div className="font-bold text-[#0a1628] text-sm">🔔 Notification Center</div>
+                <div className="font-bold text-[#0a1628] text-sm">Notification Center</div>
                 <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-semibold">6 Action Required</span>
               </div>
               <div className="divide-y divide-gray-50 max-h-80 overflow-y-auto">

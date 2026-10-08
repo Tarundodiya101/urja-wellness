@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCheckSquare, FiSearch, FiSmartphone, FiCreditCard, FiCheckCircle, FiClock, FiCoffee, FiAlertTriangle, FiX } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -200,12 +201,12 @@ export default function Attendance() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="label">Shake Flavor</label>
-                  <select className="input-field" value={shake} onChange={e => setShake(e.target.value)}>
+                  <Select className="input-field" value={shake} onChange={e => setShake(e.target.value)}>
                     <option value="Formula 1 Shake (Vanilla)">Formula 1 Shake (Vanilla)</option>
                     <option value="Formula 1 Shake (Chocolate)">Formula 1 Shake (Chocolate)</option>
                     <option value="Formula 1 Shake (Mango)">Formula 1 Shake (Mango)</option>
                     <option value="Personalized Protein Powder">Personalized Protein Powder</option>
-                  </select>
+                  </Select>
                 </div>
                 <div>
                   <label className="label">Shake Count</label>
@@ -272,7 +273,7 @@ export default function Attendance() {
                       <td className="p-2 text-gray-500">{a.time || '07:42 AM'}</td>
                       <td className="p-2 text-emerald-800 font-semibold">{a.shake} (x{a.shakeCount})</td>
                       <td className="p-2 text-gray-600">
-                        {a.tea ? 'Tea ✓ ' : ''}{a.aloe ? 'Aloe ✓ ' : ''}{a.protein ? 'Protein ✓' : ''}
+                        {a.tea ? 'Tea ' : ''}{a.aloe ? 'Aloe ' : ''}{a.protein ? 'Protein ' : ''}
                       </td>
                       <td className="p-2"><Badge status="Present" /></td>
                     </tr>
@@ -289,7 +290,7 @@ export default function Attendance() {
         <Modal isOpen={true} onClose={() => setWelcomeModal(null)} title="Barcode Check-in Confirmation" size="md">
           <div className="text-center space-y-4 py-2">
             <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl font-black shadow-inner">
-              ✓
+              
             </div>
 
             <div>

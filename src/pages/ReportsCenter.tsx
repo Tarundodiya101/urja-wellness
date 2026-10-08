@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiFileText, FiDownload, FiUpload, FiFolder, FiCheck, FiPrinter } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -29,7 +30,7 @@ export default function ReportsCenter() {
           <h1 className="page-title">Reports, Download & Upload Center</h1>
           <p className="text-sm text-gray-500">Master Sections 19, 20, 21, 22: 1-Click URJA Wellness Reports, Download PDF/Excel, Upload Center & Member-wise Storage</p>
         </div>
-        <select
+        <Select
           className="input-field w-64 bg-white font-bold"
           value={selectedMemberId}
           onChange={e => setSelectedMemberId(e.target.value)}
@@ -37,7 +38,7 @@ export default function ReportsCenter() {
           {members.map((m: any) => (
             <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
           ))}
-        </select>
+        </Select>
       </div>
 
       {/* Specification Section 19: 1-CLICK URJA WELLNESS REPORT */}
@@ -65,24 +66,24 @@ export default function ReportsCenter() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-3 bg-white rounded-xl border space-y-1">
-              <div className="font-bold text-emerald-900 border-b pb-1">📏 Body Measurements</div>
+              <div className="font-bold text-emerald-900 border-b pb-1">Body Measurements</div>
               <div>Weight: <span className="font-bold">78.0 kg → 74.0 kg (-4.0 kg)</span></div>
               <div>Body Fat: <span className="font-bold">26.5% → 23.8% (-2.7%)</span></div>
               <div>Waist: <span className="font-bold">38" → 35.5" (-2.5")</span></div>
             </div>
 
             <div className="p-3 bg-white rounded-xl border space-y-1">
-              <div className="font-bold text-blue-900 border-b pb-1">💧 Lifestyle & Habits</div>
+              <div className="font-bold text-blue-900 border-b pb-1">Lifestyle & Habits</div>
               <div>Hydration: <span className="font-bold">3.5 Liters Daily (100%)</span></div>
               <div>Activity: <span className="font-bold">8,400 Steps / 75 Active mins</span></div>
               <div>Habit Score: <span className="font-bold text-emerald-600">8/8 Excellent</span></div>
             </div>
 
             <div className="p-3 bg-white rounded-xl border space-y-1">
-              <div className="font-bold text-purple-900 border-b pb-1">📲 Attendance & Progress</div>
+              <div className="font-bold text-purple-900 border-b pb-1">Attendance & Progress</div>
               <div>Visits Count: <span className="font-bold">86 Sessions</span></div>
               <div>Attendance %: <span className="font-bold text-emerald-600">96.5% Regular</span></div>
-              <div>30-Day Milestone: <span className="font-bold text-emerald-600">Completed ✓</span></div>
+              <div>30-Day Milestone: <span className="font-bold text-emerald-600">Completed </span></div>
             </div>
           </div>
         </div>
@@ -140,13 +141,13 @@ export default function ReportsCenter() {
           <form onSubmit={handleUploadDocument} className="space-y-3 text-xs">
             <div>
               <label className="label text-[10px]">Select Document Category</label>
-              <select className="input-field">
+              <Select className="input-field">
                 <option value="Photo">Photo (Front/Side/Back)</option>
                 <option value="Measurement">Measurement Report</option>
                 <option value="Analysis">Body Analysis Report</option>
                 <option value="FoodRecord">Food Record</option>
                 <option value="DoctorNote">Doctor / Coach Note</option>
-              </select>
+              </Select>
             </div>
             <input type="file" className="text-xs text-gray-500 bg-gray-50 p-2 rounded-xl border w-full" />
             <button type="submit" className="btn-primary w-full justify-center">Upload File to Member Folder</button>
@@ -160,13 +161,13 @@ export default function ReportsCenter() {
           </h3>
           <div className="p-3 bg-navy-950 text-emerald-400 font-mono text-xs rounded-xl space-y-1">
             <div className="font-bold text-white">URJA / Members /</div>
-            <div className="pl-4">└── 📁 Member ID: {member.id} ({member.name})</div>
-            <div className="pl-8 text-emerald-300">├── 📁 Profile & Program</div>
-            <div className="pl-8 text-emerald-300">├── 📁 Day-by-Day Photos (Baseline, Day 7, 14, 30, 90)</div>
-            <div className="pl-8 text-emerald-300">├── 📁 Body Measurements & BMI</div>
-            <div className="pl-8 text-emerald-300">├── 📁 Nutrition & Daily Habit Score</div>
-            <div className="pl-8 text-emerald-300">├── 📁 QR Attendance Log</div>
-            <div className="pl-8 text-emerald-300">└── 📁 Payments & Reports</div>
+            <div className="pl-4">└── Member ID: {member.id} ({member.name})</div>
+            <div className="pl-8 text-emerald-300">├── Profile & Program</div>
+            <div className="pl-8 text-emerald-300">├── Day-by-Day Photos (Baseline, Day 7, 14, 30, 90)</div>
+            <div className="pl-8 text-emerald-300">├── Body Measurements & BMI</div>
+            <div className="pl-8 text-emerald-300">├── Nutrition & Daily Habit Score</div>
+            <div className="pl-8 text-emerald-300">├── QR Attendance Log</div>
+            <div className="pl-8 text-emerald-300">└── Payments & Reports</div>
           </div>
         </div>
       </div>

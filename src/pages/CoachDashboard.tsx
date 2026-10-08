@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiUsers, FiCheckSquare, FiCamera, FiTrendingUp, FiPhoneCall, FiCoffee, FiAlertCircle } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -19,7 +20,7 @@ export default function CoachDashboard() {
           <h1 className="page-title">👨‍🏫 Coach Dashboard & Daily Priorities</h1>
           <p className="text-sm text-gray-500">Master Section 25: Coach Priorities (Attendance, Photos Due, Measurements Due, Follow-ups & Nutrition Reviews)</p>
         </div>
-        <select
+        <Select
           className="input-field w-64 bg-white font-bold"
           value={selectedCoach}
           onChange={e => setSelectedCoach(e.target.value)}
@@ -27,7 +28,7 @@ export default function CoachDashboard() {
           {coaches.map((c: any) => (
             <option key={c.id} value={c.name}>{c.name} ({c.assignedCount} Clients)</option>
           ))}
-        </select>
+        </Select>
       </div>
 
       {/* Priority Summary Cards */}
@@ -70,7 +71,7 @@ export default function CoachDashboard() {
         {/* Members Needing Attention */}
         <div className="card space-y-3 border-l-4 border-rose-500">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiAlertCircle className="text-rose-600" /> 🔴 Members Needing Immediate Coach Attention
+            <FiAlertCircle className="text-rose-600" /> Members Needing Immediate Coach Attention
           </h3>
           <div className="space-y-2 text-xs">
             {coachFollowups.map((f: any) => (
@@ -90,7 +91,7 @@ export default function CoachDashboard() {
         {/* Assigned Members & Nutrition Review */}
         <div className="card space-y-3 border-l-4 border-emerald-500">
           <h3 className="section-title flex items-center gap-2 mb-0">
-            <FiCoffee className="text-emerald-600" /> 🍎 Assigned Clients Nutrition & Habit Status
+            <FiCoffee className="text-emerald-600" /> Assigned Clients Nutrition & Habit Status
           </h3>
           <div className="space-y-2 text-xs">
             {coachMembers.map((m: any) => (
@@ -101,7 +102,7 @@ export default function CoachDashboard() {
                 </div>
                 <div className="text-right">
                   <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">
-                    Habit 8/8 ✓
+                    Habit 8/8 
                   </span>
                 </div>
               </div>

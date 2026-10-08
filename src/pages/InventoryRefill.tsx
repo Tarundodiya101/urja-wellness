@@ -63,7 +63,7 @@ export default function InventoryRefill() {
         <div className="p-4 bg-gray-50 border-b border-gray-100 font-bold text-navy-900 text-sm flex items-center justify-between">
           <span>Product Inventory & Stock Status ({products.length} Products)</span>
           <span className="text-xs bg-amber-100 text-amber-900 font-bold px-3 py-0.5 rounded-full">
-            Low Stock Alerts Active ⚠️
+            Low Stock Alerts Active ️
           </span>
         </div>
 

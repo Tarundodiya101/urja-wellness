@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiPlus, FiShoppingBag, FiTruck, FiSave, FiTrash2 } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -161,9 +162,9 @@ export default function Purchases() {
               <div key={idx} className="grid grid-cols-12 gap-2 items-center bg-white p-2.5 rounded-lg border border-gray-200 text-xs">
                 <div className="col-span-4">
                   <label className="label text-[10px]">Product</label>
-                  <select className="input-field py-1" value={item.product} onChange={e => updateItemField(idx, 'product', e.target.value)}>
+                  <Select className="input-field py-1" value={item.product} onChange={e => updateItemField(idx, 'product', e.target.value)}>
                     {products.map(p => <option key={p.id} value={p.name}>{p.name}</option>)}
-                  </select>
+                  </Select>
                 </div>
                 <div className="col-span-2">
                   <label className="label text-[10px]">Batch No</label>

@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiTrendingUp, FiPlus, FiSave, FiActivity } from 'react-icons/fi';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
@@ -53,7 +54,7 @@ export default function BodyMeasurements() {
         <div className="flex items-center gap-3">
           <FiActivity className="text-emerald-600 text-xl" />
           <span className="font-bold text-navy-900 text-sm">Select Member:</span>
-          <select
+          <Select
             className="input-field w-64 bg-white"
             value={selectedMemberId}
             onChange={e => setSelectedMemberId(e.target.value)}
@@ -61,7 +62,7 @@ export default function BodyMeasurements() {
             {members.map((m: any) => (
               <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
             ))}
-          </select>
+          </Select>
         </div>
         <div className="text-xs text-emerald-800 font-bold bg-emerald-100 px-3 py-1 rounded-full">
           Total Sessions Measured: {list.length} Records
@@ -95,7 +96,7 @@ export default function BodyMeasurements() {
       {/* Recharts Graphs: Weight, Body Fat, Waist */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="card space-y-3">
-          <h4 className="font-bold text-navy-900 text-sm">📈 Weight Loss Trend Line (kg)</h4>
+          <h4 className="font-bold text-navy-900 text-sm">Weight Loss Trend Line (kg)</h4>
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={list}>
@@ -110,7 +111,7 @@ export default function BodyMeasurements() {
         </div>
 
         <div className="card space-y-3">
-          <h4 className="font-bold text-navy-900 text-sm">📈 Body Fat & Waist Reduction Trend</h4>
+          <h4 className="font-bold text-navy-900 text-sm">Body Fat & Waist Reduction Trend</h4>
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={list}>
@@ -139,14 +140,14 @@ export default function BodyMeasurements() {
                 </div>
                 <div>
                   <label className="label text-[10px]">Milestone Stage</label>
-                  <select className="input-field" value={form.stage} onChange={e => setForm({ ...form, stage: e.target.value })}>
+                  <Select className="input-field" value={form.stage} onChange={e => setForm({ ...form, stage: e.target.value })}>
                     <option value="Day 1 Baseline">Day 1 Baseline</option>
                     <option value="Day 7 Review">Day 7 Review</option>
                     <option value="Day 14 Review">Day 14 Review</option>
                     <option value="Day 30 Progress">Day 30 Progress</option>
                     <option value="Day 60 Transformation">Day 60 Transformation</option>
                     <option value="Day 90 Transformation">Day 90 Transformation</option>
-                  </select>
+                  </Select>
                 </div>
                 <div>
                   <label className="label text-[10px]">Weight (kg)</label>

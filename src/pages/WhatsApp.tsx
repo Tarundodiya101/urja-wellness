@@ -29,7 +29,7 @@ const TRIGGER_CARDS = [
     iconColor: 'text-green-600',
     badgeColor: 'bg-green-100 text-green-700',
     sendCount: 142,
-    template: 'Hi {name}! 🌿 Welcome to URJA Wellness Club! We\'re thrilled to have you on your wellness journey. Your coach {coach} will be in touch shortly. See you at the center! 💪',
+    template: 'Hi {name}! Welcome to URJA Wellness Club! We\'re thrilled to have you on your wellness journey. Your coach {coach} will be in touch shortly. See you at the center! ',
   },
   {
     id: 'payment',
@@ -41,7 +41,7 @@ const TRIGGER_CARDS = [
     iconColor: 'text-blue-600',
     badgeColor: 'bg-blue-100 text-blue-700',
     sendCount: 38,
-    template: 'Hi {name}! 💳 This is a gentle reminder that your payment of ₹{amount} is due on {date}. Please complete the payment at the center or via UPI. Thank you! – URJA Wellness',
+    template: 'Hi {name}! This is a gentle reminder that your payment of ₹{amount} is due on {date}. Please complete the payment at the center or via UPI. Thank you! – URJA Wellness',
   },
   {
     id: 'renewal',
@@ -53,7 +53,7 @@ const TRIGGER_CARDS = [
     iconColor: 'text-orange-600',
     badgeColor: 'bg-orange-100 text-orange-700',
     sendCount: 56,
-    template: 'Hi {name}! ⏳ Your URJA membership expires on {expiry_date}. Renew now to continue your wellness journey without a break! Early renewal gets a *special discount*. Contact us today 🙏',
+    template: 'Hi {name}! ⏳ Your URJA membership expires on {expiry_date}. Renew now to continue your wellness journey without a break! Early renewal gets a *special discount*. Contact us today ',
   },
   {
     id: 'absence',
@@ -65,7 +65,7 @@ const TRIGGER_CARDS = [
     iconColor: 'text-red-600',
     badgeColor: 'bg-red-100 text-red-700',
     sendCount: 29,
-    template: 'Hi {name}! 😊 We miss you at URJA! It\'s been {days} days since your last visit. Your coach {coach} is waiting for you. Come back and stay on track with your goals! 💚',
+    template: 'Hi {name}! We miss you at URJA! It\'s been {days} days since your last visit. Your coach {coach} is waiting for you. Come back and stay on track with your goals! ',
   },
   {
     id: 'birthday',
@@ -77,7 +77,7 @@ const TRIGGER_CARDS = [
     iconColor: 'text-purple-600',
     badgeColor: 'bg-purple-100 text-purple-700',
     sendCount: 17,
-    template: '🎂 Happy Birthday {name}! The entire URJA Wellness family wishes you a wonderful year ahead. May you be healthy, happy & strong! Come celebrate with a free shake today! 🎉',
+    template: 'Happy Birthday {name}! The entire URJA Wellness family wishes you a wonderful year ahead. May you be healthy, happy & strong! Come celebrate with a free shake today! ',
   },
   {
     id: 'appointment',
@@ -89,7 +89,7 @@ const TRIGGER_CARDS = [
     iconColor: 'text-teal-600',
     badgeColor: 'bg-teal-100 text-teal-700',
     sendCount: 84,
-    template: 'Hi {name}! 📅 Reminder: You have a session scheduled at URJA Wellness tomorrow at {time} with {coach}. Please be on time. See you! 🌿',
+    template: 'Hi {name}! 📅 Reminder: You have a session scheduled at URJA Wellness tomorrow at {time} with {coach}. Please be on time. See you! ',
   },
 ];
 
@@ -118,13 +118,13 @@ const STATUS_ICON = {
 };
 
 const INITIAL_LOGS = [
-  { id: 1, recipient: 'Anjali Mehta',  mobile: '9876543210', type: 'Welcome Message',      preview: 'Hi Anjali! 🌿 Welcome to URJA Wellness Club!...', sentAt: '2026-10-01 08:00', status: 'Read'      },
-  { id: 2, recipient: 'Suresh Patel',  mobile: '9876501234', type: 'Payment Reminder',     preview: 'Hi Suresh! 💳 This is a gentle reminder that your payment...', sentAt: '2026-10-01 09:15', status: 'Delivered' },
-  { id: 3, recipient: 'Ramesh Kumar',  mobile: '9876500001', type: 'Absence Reminder',     preview: 'Hi Ramesh! 😊 We miss you at URJA! It\'s been 3 days...', sentAt: '2026-09-30 10:30', status: 'Read'      },
+  { id: 1, recipient: 'Anjali Mehta',  mobile: '9876543210', type: 'Welcome Message',      preview: 'Hi Anjali! Welcome to URJA Wellness Club!...', sentAt: '2026-10-01 08:00', status: 'Read'      },
+  { id: 2, recipient: 'Suresh Patel',  mobile: '9876501234', type: 'Payment Reminder',     preview: 'Hi Suresh! This is a gentle reminder that your payment...', sentAt: '2026-10-01 09:15', status: 'Delivered' },
+  { id: 3, recipient: 'Ramesh Kumar',  mobile: '9876500001', type: 'Absence Reminder',     preview: 'Hi Ramesh! We miss you at URJA! It\'s been 3 days...', sentAt: '2026-09-30 10:30', status: 'Read'      },
   { id: 4, recipient: 'Deepa Iyer',    mobile: '9001122334', type: 'Renewal Reminder',     preview: 'Hi Deepa! ⏳ Your URJA membership expires on Oct 15...', sentAt: '2026-09-30 11:00', status: 'Read'      },
-  { id: 5, recipient: 'Lata Tiwari',   mobile: '9876500006', type: 'Birthday Wish',        preview: '🎂 Happy Birthday Lata! The entire URJA Wellness...', sentAt: '2026-09-29 07:00', status: 'Delivered' },
+  { id: 5, recipient: 'Lata Tiwari',   mobile: '9876500006', type: 'Birthday Wish',        preview: 'Happy Birthday Lata! The entire URJA Wellness...', sentAt: '2026-09-29 07:00', status: 'Delivered' },
   { id: 6, recipient: 'Vikram Nair',   mobile: '9988776655', type: 'Appointment Reminder', preview: 'Hi Vikram! 📅 Reminder: You have a session scheduled...', sentAt: '2026-09-29 09:00', status: 'Failed'    },
-  { id: 7, recipient: 'Pooja Rao',     mobile: '9123456789', type: 'Welcome Message',      preview: 'Hi Pooja! 🌿 Welcome to URJA Wellness Club!...', sentAt: '2026-09-28 08:00', status: 'Read'      },
+  { id: 7, recipient: 'Pooja Rao',     mobile: '9123456789', type: 'Welcome Message',      preview: 'Hi Pooja! Welcome to URJA Wellness Club!...', sentAt: '2026-09-28 08:00', status: 'Read'      },
 ];
 
 // ─── Edit Template Modal ──────────────────────────────────────────────────────
@@ -184,7 +184,7 @@ function PreviewModal({ message, segment, count, onClose, onSend }) {
         <div className="bg-[#ECE5DD] rounded-xl p-4 mb-4">
           <div className="bg-white rounded-xl rounded-tl-none p-3 shadow-sm max-w-[90%]">
             <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">{sample}</p>
-            <p className="text-xs text-gray-400 text-right mt-1.5">10:00 AM ✓✓</p>
+            <p className="text-xs text-gray-400 text-right mt-1.5">10:00 AM </p>
           </div>
         </div>
         <div className="flex items-center gap-2 bg-blue-50 rounded-lg p-3 mb-4">
@@ -239,7 +239,7 @@ export default function WhatsApp() {
 
   const saveTemplate = (id, text) => {
     setCards((prev) => prev.map((c) => c.id === id ? { ...c, template: text } : c));
-    showToast('✅ Template saved successfully!');
+    showToast('Template saved successfully!');
   };
 
   const addLog = (type, preview) => {
@@ -259,14 +259,14 @@ export default function WhatsApp() {
 
   const handleSendTrigger = (card) => {
     addLog(card.title, card.template);
-    showToast(`✅ "${card.title}" sent to all eligible members!`);
+    showToast(`"${card.title}" sent to all eligible members!`);
   };
 
   const handleBroadcastSend = () => {
     if (!message.trim()) return;
     addLog('Broadcast', message);
     setShowPreview(false);
-    showToast(`✅ Broadcast sent to ${SEGMENT_COUNTS[segment]} members in "${segment}"!`);
+    showToast(`Broadcast sent to ${SEGMENT_COUNTS[segment]} members in "${segment}"!`);
     setMessage('');
   };
 

@@ -150,11 +150,11 @@ export const MEMBER_MEASUREMENTS = {
 // Master Section 6: Photo Management Baseline & Comparisons
 export const MEMBER_PHOTOS = {
   'URJA-00001': [
-    { date: '2025-09-11', stage: 'Day 1 Baseline', front: '📸 Baseline Front View', side: '📸 Baseline Side View', back: '📸 Baseline Back View' },
-    { date: '2025-10-01', stage: 'Day 30 Progress', front: '📸 Day 30 Front View', side: '📸 Day 30 Side View', back: '📸 Day 30 Back View' }
+    { date: '2025-09-11', stage: 'Day 1 Baseline', front: 'Baseline Front View', side: 'Baseline Side View', back: 'Baseline Back View' },
+    { date: '2025-10-01', stage: 'Day 30 Progress', front: 'Day 30 Front View', side: 'Day 30 Side View', back: 'Day 30 Back View' }
   ],
   'URJA-00003': [
-    { date: '2025-09-15', stage: 'Day 1 Baseline', front: '📸 Day 1 Baseline Front', side: '📸 Day 1 Baseline Side', back: '📸 Day 1 Baseline Back' }
+    { date: '2025-09-15', stage: 'Day 1 Baseline', front: 'Day 1 Baseline Front', side: 'Day 1 Baseline Side', back: 'Day 1 Baseline Back' }
   ]
 };
 
@@ -199,9 +199,9 @@ export const PAYMENT_TRANSACTIONS = [
 
 // Master Section 18: Follow-up System List
 export const FOLLOW_UP_LIST = [
-  { id: 'FLW01', memberId: 'URJA-00001', memberName: 'Amit Sureliya', reason: '🔴 Measurement & Progress Review Due (Day 30)', status: 'Pending', coach: 'Priya Sharma', dueDate: '2025-10-01' },
-  { id: 'FLW02', memberId: 'URJA-00002', memberName: 'Priya Desai', reason: '🔴 Package Expired & 3+ Days Absent', status: 'Pending', coach: 'Anita Mehta', dueDate: '2025-10-01' },
-  { id: 'FLW03', memberId: 'URJA-00005', memberName: 'Hardik Mehta', reason: '🥤 Nutrition Stock Refill Reminder', status: 'Pending', coach: 'Rahul Patel', dueDate: '2025-10-02' }
+  { id: 'FLW01', memberId: 'URJA-00001', memberName: 'Amit Sureliya', reason: 'Measurement & Progress Review Due (Day 30)', status: 'Pending', coach: 'Priya Sharma', dueDate: '2025-10-01' },
+  { id: 'FLW02', memberId: 'URJA-00002', memberName: 'Priya Desai', reason: 'Package Expired & 3+ Days Absent', status: 'Pending', coach: 'Anita Mehta', dueDate: '2025-10-01' },
+  { id: 'FLW03', memberId: 'URJA-00005', memberName: 'Hardik Mehta', reason: 'Nutrition Stock Refill Reminder', status: 'Pending', coach: 'Rahul Patel', dueDate: '2025-10-02' }
 ];
 
 // Master Section 17: WhatsApp Message Templates (Gujarati & English)
@@ -245,10 +245,10 @@ export const MONTHLY_STATS = [
 ];
 
 export const RECENT_ACTIVITIES = [
-  { id: 1, text: 'Amit Sureliya marked Attendance at 07:42 AM', time: '10 min ago', type: 'attendance', color: 'green', icon: '✅' },
-  { id: 2, text: 'Payment of ₹4,750 received from Amit Sureliya via UPI', time: '25 min ago', type: 'payment', color: 'blue', icon: '💰' },
-  { id: 3, text: 'Day 30 Body Measurement recorded for Amit Sureliya', time: '1 hour ago', type: 'measurement', color: 'purple', icon: '📏' },
-  { id: 4, text: 'Formula 1 Shake Stock low alert triggered (4 cans remaining)', time: '2 hours ago', type: 'alert', color: 'red', icon: '📦' }
+  { id: 1, text: 'Amit Sureliya marked Attendance at 07:42 AM', time: '10 min ago', type: 'attendance', color: 'green', icon: '' },
+  { id: 2, text: 'Payment of ₹4,750 received from Amit Sureliya via UPI', time: '25 min ago', type: 'payment', color: 'blue', icon: '' },
+  { id: 3, text: 'Day 30 Body Measurement recorded for Amit Sureliya', time: '1 hour ago', type: 'measurement', color: 'purple', icon: '' },
+  { id: 4, text: 'Formula 1 Shake Stock low alert triggered (4 cans remaining)', time: '2 hours ago', type: 'alert', color: 'red', icon: '' }
 ];
 
 export const LEADS = [

@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiPlus, FiDollarSign, FiCalendar, FiSave, FiTag } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -102,9 +103,9 @@ export default function Expenses() {
         <form onSubmit={handleSave} className="space-y-4">
           <div>
             <label className="label">Expense Category *</label>
-            <select className="input-field" value={category} onChange={e => setCategory(e.target.value)}>
+            <Select className="input-field" value={category} onChange={e => setCategory(e.target.value)}>
               {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
+            </Select>
           </div>
 
           <div>
@@ -115,12 +116,12 @@ export default function Expenses() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="label">Payment Mode</label>
-              <select className="input-field" value={paymentMode} onChange={e => setPaymentMode(e.target.value)}>
+              <Select className="input-field" value={paymentMode} onChange={e => setPaymentMode(e.target.value)}>
                 <option value="Cash">Cash</option>
                 <option value="UPI">UPI</option>
                 <option value="Bank">Bank Transfer</option>
                 <option value="Card">Credit/Debit Card</option>
-              </select>
+              </Select>
             </div>
             <div>
               <label className="label">Expense Date</label>

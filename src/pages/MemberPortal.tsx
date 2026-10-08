@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiUser, FiCheckCircle, FiCamera, FiTrendingUp, FiCoffee, FiCreditCard, FiMaximize, FiPhone, FiSun, FiMoon, FiActivity, FiSmile } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -29,7 +30,7 @@ export default function MemberPortal() {
             </div>
           </div>
           
-          <select
+          <Select
             className="bg-white/10 border border-white/20 rounded-lg px-2 py-1 text-xs text-white focus:outline-none font-bold"
             value={selectedMemberId}
             onChange={e => setSelectedMemberId(e.target.value)}
@@ -37,7 +38,7 @@ export default function MemberPortal() {
             {members.map((m: any) => (
               <option key={m.id} value={m.id} className="text-gray-900">{m.name}</option>
             ))}
-          </select>
+          </Select>
         </div>
 
         {/* Member Profile Banner */}
@@ -112,7 +113,7 @@ export default function MemberPortal() {
         {activeTab === 'overview' && (
           <div className="space-y-4">
             <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-2 text-xs">
-              <div className="font-bold text-emerald-950 text-sm">🎯 Your Transformation Goal</div>
+              <div className="font-bold text-emerald-950 text-sm">Your Transformation Goal</div>
               <div className="text-emerald-800">{member.wellnessGoal}</div>
               <div className="flex justify-between font-bold text-emerald-900 pt-1">
                 <span>Start: 78.0 kg</span>
@@ -123,7 +124,7 @@ export default function MemberPortal() {
 
             <div className="p-4 bg-white rounded-2xl border space-y-2 text-xs">
               <div className="font-bold text-navy-900 flex justify-between">
-                <span>💧 Daily Hydration Target</span>
+                <span>Daily Hydration Target</span>
                 <span className="text-blue-600 font-bold">3.5 / 3.5 Liters (100%)</span>
               </div>
               <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
@@ -141,13 +142,13 @@ export default function MemberPortal() {
           <div className="space-y-3 text-xs">
             <div className="font-bold text-navy-900 text-sm">Your Daily Habit Score: <span className="text-emerald-600 font-bold">8/8 Excellent ⭐</span></div>
             <div className="p-4 bg-white rounded-2xl border space-y-2">
-              <div>✓ 1. Portion Controlled Nutrition Meal</div>
-              <div>✓ 2. Hydration 3.5L Water Completed</div>
-              <div>✓ 3. 45+ mins Daily Walking / Movement</div>
-              <div>✓ 4. 7.5 hrs Restful Sleep</div>
-              <div>✓ 5. Fresh Fruits & Vegetables Served</div>
-              <div>✓ 6. Active Stress Relief & Breathing</div>
-              <div>✓ 7. URJA Center Session Attended</div>
+              <div>1. Portion Controlled Nutrition Meal</div>
+              <div>2. Hydration 3.5L Water Completed</div>
+              <div>3. 45+ mins Daily Walking / Movement</div>
+              <div>4. 7.5 hrs Restful Sleep</div>
+              <div>5. Fresh Fruits & Vegetables Served</div>
+              <div>6. Active Stress Relief & Breathing</div>
+              <div>7. URJA Center Session Attended</div>
             </div>
           </div>
         )}

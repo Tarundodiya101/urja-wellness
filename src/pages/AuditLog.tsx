@@ -18,7 +18,7 @@ export default function AuditLog() {
             <FiActivity className="text-emerald-600" /> System Audit Trail Records ({auditLogs.length})
           </div>
           <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full">
-            Real-time Immutable Log 🔒
+            Real-time Immutable Log 
           </span>
         </div>
 

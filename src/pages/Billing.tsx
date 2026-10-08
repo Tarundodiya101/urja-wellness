@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState, useMemo, useRef } from 'react';
 import { format } from 'date-fns';
 import {
@@ -152,6 +153,7 @@ export default function Billing() {
   // ── View/Search State ──────────────────────────────────────────────────────
   const [billSearch, setBillSearch] = useState('');
   const [viewBill, setViewBill] = useState(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
   // ── member suggestions ─────────────────────────────────────────────────────
   const memberSuggestions = useMemo(() => {
@@ -350,7 +352,7 @@ export default function Billing() {
                 <div key={row.key} className="grid grid-cols-12 gap-2 items-center">
                   <div className="col-span-5">
                     <div className="relative">
-                      <select
+                      <Select
                         value={row.product}
                         onChange={(e) => updateRow(row.key, 'product', e.target.value)}
                         className="w-full appearance-none text-sm border border-gray-200 rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white"
@@ -359,7 +361,7 @@ export default function Billing() {
                         {productOptions.map((p) => (
                           <option key={p.name} value={p.name}>{p.name}</option>
                         ))}
-                      </select>
+                      </Select>
                       <FiChevronDown className="absolute right-2 top-2.5 text-gray-400 text-sm pointer-events-none" />
                     </div>
                   </div>
@@ -530,7 +532,7 @@ export default function Billing() {
                           className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition">
                           <FiPrinter className="text-sm" />
                         </button>
-                        <button onClick={() => deleteBill?.(bill.billId)} title="Delete"
+                        <button onClick={() => setConfirmDeleteId(bill.billId)} title="Delete"
                           className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 transition">
                           <FiTrash2 className="text-sm" />
                         </button>

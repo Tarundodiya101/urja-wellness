@@ -49,7 +49,7 @@ function diffColor(diff) {
 }
 
 function diffLabel(diff) {
-  if (diff === 0) return 'Balanced ✓';
+  if (diff === 0) return 'Balanced ';
   if (diff < 0)  return `Short by ₹${Math.abs(diff).toLocaleString()}`;
   return                 `Excess ₹${diff.toLocaleString()}`;
 }

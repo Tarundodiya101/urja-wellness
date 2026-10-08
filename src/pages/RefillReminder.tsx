@@ -52,7 +52,7 @@ export default function RefillReminder() {
       <div className="card bg-amber-50 border-l-4 border-amber-500 p-4 space-y-2">
         <div className="flex items-center justify-between">
           <div className="font-bold text-amber-900 text-sm flex items-center gap-2">
-            <FiBell className="text-amber-600" /> 🔔 PRODUCT REFILL DUE DASHBOARD ALERT
+            <FiBell className="text-amber-600" /> PRODUCT REFILL DUE DASHBOARD ALERT
           </div>
           <span className="text-xs bg-amber-200 text-amber-900 font-bold px-2 py-0.5 rounded-full">
             {refillReminders.length} Reminders Active

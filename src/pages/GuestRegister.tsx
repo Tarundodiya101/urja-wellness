@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCheckCircle, FiUserPlus, FiSend } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -36,7 +37,7 @@ export default function GuestRegister() {
     <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl rounded-3xl overflow-hidden border-4 border-emerald-700 animate-fade-in my-2 p-6 space-y-6">
       <div className="text-center space-y-2">
         <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl font-black shadow-md">
-          🌱
+          
         </div>
         <h1 className="text-2xl font-black text-navy-900">URJA WELLNESS CLUB</h1>
         <div className="text-xs font-bold text-emerald-700 uppercase tracking-widest">Guest Registration Form (Specification Section 33)</div>
@@ -79,24 +80,24 @@ export default function GuestRegister() {
 
           <div>
             <label className="label">Primary Health Goal</label>
-            <select className="input-field" value={interestedIn} onChange={e => setInterestedIn(e.target.value)}>
+            <Select className="input-field" value={interestedIn} onChange={e => setInterestedIn(e.target.value)}>
               <option value="Weight Loss">Weight Loss</option>
               <option value="Weight Gain">Weight Gain</option>
               <option value="Fitness">Fitness & Muscle Gain</option>
               <option value="Healthy Lifestyle">Healthy Lifestyle</option>
               <option value="General Nutrition">General Nutrition</option>
-            </select>
+            </Select>
           </div>
 
           <div>
             <label className="label">How did you hear about us? (Source)</label>
-            <select className="input-field" value={source} onChange={e => setSource(e.target.value)}>
+            <Select className="input-field" value={source} onChange={e => setSource(e.target.value)}>
               <option value="Walk-in">Walk-in Visit</option>
               <option value="Friend">Friend / Relative</option>
               <option value="Referral">Member Referral</option>
               <option value="Social Media">Instagram / Facebook</option>
               <option value="WhatsApp">WhatsApp Message</option>
-            </select>
+            </Select>
           </div>
 
           <div>

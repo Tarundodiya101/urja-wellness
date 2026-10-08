@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiPlus, FiShield, FiUserCheck, FiLock, FiSave } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -88,29 +89,29 @@ export default function UserManagement() {
             <tbody className="divide-y divide-gray-100 font-semibold">
               <tr className="bg-emerald-50/50">
                 <td className="p-3 font-bold text-emerald-900">ADMIN</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
               </tr>
               <tr>
                 <td className="p-3 font-bold text-blue-900">RECEPTION</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
               </tr>
               <tr className="bg-purple-50/50">
                 <td className="p-3 font-bold text-purple-900">COACH</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
@@ -121,8 +122,8 @@ export default function UserManagement() {
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
-                <td className="p-3 text-emerald-700">✅ Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
+                <td className="p-3 text-emerald-700">Allowed</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
                 <td className="p-3 text-red-500">❌ Restricted</td>
               </tr>
@@ -192,13 +193,13 @@ export default function UserManagement() {
 
           <div>
             <label className="label">Role Assignment *</label>
-            <select className="input-field" value={role} onChange={e => handleRoleChange(e.target.value)}>
+            <Select className="input-field" value={role} onChange={e => handleRoleChange(e.target.value)}>
               <option value="ADMIN">ADMIN (Full Access)</option>
               <option value="RECEPTION">RECEPTION (Attendance, Billing, Payments, Ledger)</option>
               <option value="COACH">COACH (Attendance & Client Tracking)</option>
               <option value="STOCK MANAGER">STOCK MANAGER (Inventory & Purchase Entry)</option>
               <option value="ACCOUNT USER">ACCOUNT USER (Ledger, Billing, Financial Reports)</option>
-            </select>
+            </Select>
           </div>
 
           <div className="border border-gray-200 rounded-xl p-3 bg-gray-50 space-y-2">

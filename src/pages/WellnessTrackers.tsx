@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCoffee, FiSun, FiMoon, FiActivity, FiSmile, FiSave, FiCheckCircle } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -30,9 +31,9 @@ export default function WellnessTrackers() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="page-title">Nutrition, Hydration, Activity, Sleep & Stress Trackers</h1>
-          <p className="text-sm text-gray-500">Master Sections 8, 9, 10, 11, 12: Daily Food Record, Water 💧, Steps 🚶, Sleep 😴 & Stress 🧠 Management</p>
+          <p className="text-sm text-gray-500">Master Sections 8, 9, 10, 11, 12: Daily Food Record, Water , Steps , Sleep & Stress Management</p>
         </div>
-        <select
+        <Select
           className="input-field w-64 bg-white font-bold"
           value={selectedMemberId}
           onChange={e => setSelectedMemberId(e.target.value)}
@@ -40,7 +41,7 @@ export default function WellnessTrackers() {
           {members.map((m: any) => (
             <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
           ))}
-        </select>
+        </Select>
       </div>
 
       <form onSubmit={handleSaveLog} className="space-y-6">
@@ -79,12 +80,12 @@ export default function WellnessTrackers() {
 
           <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs space-y-1">
             <div className="font-bold text-emerald-900">Coach Educational Guidelines & Portion Control</div>
-            <div className="text-emerald-700">✓ Balanced Plate: 50% Veggies/Salad + 25% Lean Protein + 25% Complex Carbs</div>
-            <div className="text-emerald-700">✓ Limit added sugar, excess salt & processed foods. Ensure minimum 3.0L Hydration daily.</div>
+            <div className="text-emerald-700">Balanced Plate: 50% Veggies/Salad + 25% Lean Protein + 25% Complex Carbs</div>
+            <div className="text-emerald-700">Limit added sugar, excess salt & processed foods. Ensure minimum 3.0L Hydration daily.</div>
           </div>
         </div>
 
-        {/* Section 9 & 10: Hydration 💧 & Activity 🚶 */}
+        {/* Section 9 & 10: Hydration & Activity */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Hydration */}
           <div className="card space-y-4 border-l-4 border-blue-500">
@@ -106,7 +107,7 @@ export default function WellnessTrackers() {
               </div>
             </div>
             <div className="p-3 bg-blue-100 rounded-xl text-center text-xs font-bold text-blue-900">
-              Total Hydration Achieved: {log.hydration?.total || 3.5} Liters / Goal: {log.hydration?.goal || 3.5} Liters (100% Complete ✓)
+              Total Hydration Achieved: {log.hydration?.total || 3.5} Liters / Goal: {log.hydration?.goal || 3.5} Liters (100% Complete )
             </div>
           </div>
 
@@ -163,10 +164,10 @@ export default function WellnessTrackers() {
             <div className="p-3 bg-teal-50 rounded-xl text-xs space-y-2">
               <div className="flex justify-between items-center font-bold text-teal-900">
                 <span>Stress Rating (1–5):</span>
-                <span className="text-base bg-teal-200 px-3 py-0.5 rounded-full">{log.stress?.stressLevel || 2} / 5 (Low Stress ✓)</span>
+                <span className="text-base bg-teal-200 px-3 py-0.5 rounded-full">{log.stress?.stressLevel || 2} / 5 (Low Stress )</span>
               </div>
               <div className="text-teal-700">
-                Daily Wellness Activities Completed: Breathing Exercises ✓ | Meditation ✓ | Outdoor Screen Break ✓
+                Daily Wellness Activities Completed: Breathing Exercises | Meditation | Outdoor Screen Break 
               </div>
             </div>
           </div>

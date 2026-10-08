@@ -210,7 +210,7 @@ export default function Dashboard() {
       {/* ── Alert Banners ───────────────────────────────────────────── */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <AlertBanner
-          icon="🚨"
+          icon=""
           label="Low Stock Alert"
           count={lowStockItems.length}
           detail={lowStockItems.length > 0 ? lowStockItems.map(p => p.name).join(', ') : 'All stocks OK'}
@@ -220,7 +220,7 @@ export default function Dashboard() {
           textSub="text-red-500"
         />
         <AlertBanner
-          icon="🔄"
+          icon=""
           label="Renewals Due Today"
           count={renewalsToday.length}
           detail={renewalsToday.length > 0 ? renewalsToday.map(m => m.name).join(', ') : 'No renewals today'}
@@ -230,7 +230,7 @@ export default function Dashboard() {
           textSub="text-orange-500"
         />
         <AlertBanner
-          icon="🎉"
+          icon=""
           label="Today's Birthdays"
           count={todayBirthdays.length}
           detail={todayBirthdays.length > 0 ? todayBirthdays.map(m => m.name).join(', ') : 'No birthdays today'}

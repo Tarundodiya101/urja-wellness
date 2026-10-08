@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState } from 'react';
 import { FiCreditCard, FiPlus, FiPrinter, FiMessageSquare, FiBookOpen } from 'react-icons/fi';
 import { useApp } from '../context/AppContext';
@@ -51,7 +52,7 @@ export default function PaymentsLedger() {
         <div className="flex items-center gap-3">
           <FiBookOpen className="text-emerald-600 text-xl" />
           <span className="font-bold text-navy-900 text-sm">Select Member Ledger:</span>
-          <select
+          <Select
             className="input-field w-64 bg-white font-bold"
             value={selectedMemberId}
             onChange={e => setSelectedMemberId(e.target.value)}
@@ -59,7 +60,7 @@ export default function PaymentsLedger() {
             {members.map((m: any) => (
               <option key={m.id} value={m.id}>{m.name} ({m.id})</option>
             ))}
-          </select>
+          </Select>
         </div>
         <div className="flex gap-2">
           <button onClick={() => alert(`Printing Ledger Statement for ${member.name}...`)} className="btn-outline py-1 px-3 text-xs">
@@ -143,12 +144,12 @@ export default function PaymentsLedger() {
 
             <div>
               <label className="label text-[10px]">Payment Mode</label>
-              <select className="input-field" value={mode} onChange={e => setMode(e.target.value)}>
+              <Select className="input-field" value={mode} onChange={e => setMode(e.target.value)}>
                 <option value="Cash">Cash</option>
                 <option value="UPI">UPI (GPay / PhonePe / Paytm)</option>
                 <option value="Bank">Bank Transfer / NEFT</option>
                 <option value="Card">Credit / Debit Card</option>
-              </select>
+              </Select>
             </div>
 
             <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs">

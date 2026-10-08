@@ -1,3 +1,4 @@
+import { Select } from '../components/ui/fields';
 import React, { useState, useMemo } from 'react';
 import { format } from 'date-fns';
 import {
@@ -199,7 +200,7 @@ function PaymentModal({ members, bills, onSave, onClose }) {
           {selectedMember && (
             <div>
               <label className="text-xs text-gray-500 font-medium mb-1 block">Bill Reference (optional)</label>
-              <select
+              <Select
                 value={billRef}
                 onChange={(e) => setBillRef(e.target.value)}
                 className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-300 bg-white"
@@ -210,7 +211,7 @@ function PaymentModal({ members, bills, onSave, onClose }) {
                     {b.billId} | Due: ₹{b.balance?.toFixed(2)} | {b.date}
                   </option>
                 ))}
-              </select>
+              </Select>
             </div>
           )}
 
@@ -316,6 +317,7 @@ export default function Payments() {
   const { members = [], bills = [], payments = [], addPayment, deletePayment } = useApp();
 
   const [showModal, setShowModal] = useState(false);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [search, setSearch] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState(format(new Date(), 'yyyy-MM-dd'));
@@ -517,7 +519,7 @@ export default function Payments() {
                           <FiPrinter className="text-sm" />
                         </button>
                         <button
-                          onClick={() => deletePayment?.(p.receiptNo)}
+                          onClick={() => setConfirmDeleteId(p.receiptNo)}
                           title="Delete"
                           className="p-1.5 rounded-lg hover:bg-red-50 text-red-500 transition"
                         >
